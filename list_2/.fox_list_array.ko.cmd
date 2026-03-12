@@ -1,0 +1,1 @@
+savedcmd_fox_list_array.ko := ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/src/linux-headers-6.17.0-14-generic/scripts/module.lds -o fox_list_array.ko fox_list_array.o fox_list_array.mod.o .module-common.o
