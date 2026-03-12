@@ -7,10 +7,6 @@ MODULE_DESCRIPTION("Demo: Fox list");
 MODULE_LICENSE("Dual MIT/GPL");
 MODULE_VERSION("0.1");
 
-/*static int no_of_node;
-module_param(no_of_node, int, 0644);
-MODULE_PARM_DESC(no_of_node, "no of node");*/
-
 static int tail_len;
 module_param(tail_len, int, 0644);
 MODULE_PARM_DESC(tail_len, "fox tail length");
