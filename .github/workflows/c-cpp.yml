@@ -21,7 +21,7 @@ jobs:
     - name: Build and Test
       # No working-directory needed if configure.ac is in the repo root
       run: |
-        autoreconf -i
+        autoreconf -vfi
         ./configure
         make
         make check
