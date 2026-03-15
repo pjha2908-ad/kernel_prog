@@ -1,0 +1,2 @@
+bin_PROGRAMS = idr_demo
+idr_demo_SOURCES = idr_demo.c
