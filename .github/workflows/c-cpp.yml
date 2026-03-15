@@ -14,13 +14,17 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install build tools
-      run: sudo apt-get update && sudo apt-get install -y autoconf automake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y autoconf automake libtool
 
     - name: Build and Test
-      working-directory: ./kernel_prog
+      # No working-directory needed if configure.ac is in the repo root
       run: |
         autoreconf -i
         ./configure
         make
         make check
         make distcheck
+
+
