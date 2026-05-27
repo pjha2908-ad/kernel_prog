@@ -92,80 +92,62 @@
     <td>Loadable Kernel Module</td>
     <td>Kernel code loaded/unloaded at runtime.</td>
   </tr>
-  </table>
-  <table>
+  
   <tr>
-            <td class="abbr">MMU</td>
-            <td class="fullform">Memory Management Unit</td>
-            <td class="desc">
-                Hardware responsible for virtual-to-physical memory translation.
-            </td>
-        </tr>
+      <td>MMU</td>
+      <td>Memory Management Unit</td>
+      <td>Hardware responsible for virtual-to-physical memory translation.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">DTB</td>
-            <td class="fullform">Device Tree Blob</td>
-            <td class="desc">
-                Binary hardware description used by the Linux kernel.
-            </td>
-        </tr>
+  <tr>
+    <td>DTB</td>
+    <td>Device Tree Blob</td>
+    <td>Binary hardware description used by the Linux kernel.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">DTS</td>
-            <td class="fullform">Device Tree Source</td>
-            <td class="desc">
-                Human-readable source used to generate DTB.
-            </td>
-        </tr>
+  <tr>
+    <td>DTS</td>
+    <td>Device Tree Source</td>
+    <td>Human-readable source used to generate DTB.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">GRUB</td>
-            <td class="fullform">Grand Unified Bootloader</td>
-            <td class="desc">
-                Default bootloader for x86/x86_64 Linux systems.
-            </td>
-        </tr>
+  <tr>
+    <td>GRUB</td>
+    <td>Grand Unified Bootloader</td>
+    <td>Default bootloader for x86/x86_64 Linux systems.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">UEFI</td>
-            <td class="fullform">Unified Extensible Firmware Interface</td>
-            <td class="desc">
-                Modern replacement for BIOS with secure and flexible boot support.
-            </td>
-        </tr>
+  <tr>
+    <td>UEFI</td>
+    <td>Unified Extensible Firmware Interface</td>
+    <td>Modern replacement for BIOS with secure and flexible boot support.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">BIOS</td>
-            <td class="fullform">Basic Input Output System</td>
-            <td class="desc">
-                Legacy firmware interface responsible for boot initialization.
-            </td>
-        </tr>
+  <tr>
+    <td>BIOS</td>
+    <td>Basic Input Output System</td>
+    <td>Legacy firmware interface responsible for boot initialization.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">RSS</td>
-            <td class="fullform">Resident Set Size</td>
-            <td class="desc">
-                Physical RAM currently occupied by a process.
-            </td>
-        </tr>
+  <tr>
+    <td>RSS</td>
+    <td>Resident Set Size</td>
+    <td>Physical RAM currently occupied by a process.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">PSS</td>
-            <td class="fullform">Proportional Set Size</td>
-            <td class="desc">
-                Shared memory divided proportionally among processes.
-            </td>
-        </tr>
+  <tr>
+    <td>PSS</td>
+    <td>Proportional Set Size</td>
+    <td>Shared memory divided proportionally among processes.</td>
+  </tr>
 
-        <tr>
-            <td class="abbr">TLB</td>
-            <td class="fullform">Translation Lookaside Buffer</td>
-            <td class="desc">
-                CPU cache for speeding up address translation.
-            </td>
-        </tr>
-
+  <tr>
+    <td>TLB</td>
+    <td>Translation Lookaside Buffer</td>
+    <td>CPU cache for speeding up address translation.</td>
+  </tr>
+</table>
+<table>
         <tr>
             <td class="abbr">PGD</td>
             <td class="fullform">Page Global Directory</td>
