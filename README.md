@@ -345,4 +345,199 @@
       It’s widely used for <b>observability, networking, and security.</b>
     </td>
   </tr>
+
+  <tr>
+    <td>BCC</td>
+    <td>BPF Compiler Collection</td>
+    <td>It is a <b>toolkit and framework for creating eBPF programs</b> used to trace, profile, and observe Linux systems <b>at runtime with very low overhead.</b><br>
+      It’s widely used for performance analysis, debugging, networking, and security.
+    </td>
+  </tr>
+
+  <tr>
+    <td>RISC</td>
+    <td>Reduced Instruction Set Computer</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>RUID</td>
+    <td>Real User ID</td>
+    <td>Who started the process.!</td>
+  </tr>
+
+  <tr>
+    <td>EUID</td>
+    <td>Effective User ID</td>
+    <td>Who the kernel trusts for access control.</td>
+  </tr>
+
+  <tr>
+    <td>SUID</td>
+    <td>Saved User ID</td>
+    <td>For temporarily dropping/regaining privilege.</td>
+  </tr>
+
+  <tr>
+    <td>FSUID</td>
+    <td>File System User ID</td>
+    <td>File-System specific checks.</td>
+  </tr>
+
+  <tr>
+    <td>TGID</td>
+    <td>Thread Group ID</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>RSS</td>
+    <td>Resident Set Size</td>
+    <td>The amount of physical RAM currently occupied by a process. RSS counts only pages that are resident in RAM, such as:
+      <ul>
+        <li>Code (text) pages</li>
+        <li>Heap</li>
+        <li>Stack</li>
+        <li>Shared libraries (counted per process)</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>PSS</td>
+    <td>Proportional Set Size</td>
+    <td>Physical memory used by a process, where shared pages are divided proportionally among all sharers.<br> 
+      <b>Example:</b><br>
+      <ul>
+        <li>2 processes share a 10 MB library</li>
+        <li>Each process gets 5 MB PSS from that library</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>DKMS</td>
+    <td>Dynamic Kernel Module Support</td>
+    <td>Framework for module auto-loading.</td>
+  </tr>
+
+  <tr>
+    <td>SIMD</td>
+    <td>Single Instruction, Multiple Data</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>FPU</td>
+    <td>Floating Point Unit</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>SVE</td>
+    <td>Scalable Vector Extension</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>BoF</td>
+    <td>Buffer Overflow</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ELF</td>
+    <td>Executable and Linkable Format</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ASLR</td>
+    <td>Adress Space Layout Randomization</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>VDSO</td>
+    <td>Virtual Dynamic Shared Object</td>
+    <td>
+      <ul>
+        <li>Provides fast system calls (e.g. gettimeofday, clock_gettime)</li>
+        <li>Avoids expensive svc (syscall) transitions</li>
+        <li>Architecture-specific </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>TLB</td>
+    <td>Translation Lookaside Buffer</td>
+    <td>It’s a <b>CPU hardware cache</b> that speeds up <b>virtual → physical address translation.</b></td>
+  </tr>
+
+  <tr>
+    <td>PGD</td>
+    <td>Page Global Directory</td>
+    <td>It is the <b>top-level page table</b> used by the Linux kernel to translate <b>virtual addresses → physical addresses.</b></td>
+  </tr>
+
+  <tr>
+    <td>PUD</td>
+    <td>Page Upper Directory</td>
+    <td>It is the second level in the Linux page table hierarchy and sits between PGD and PMD.</td>
+  </tr>
+
+  <tr>
+    <td>PMD</td>
+    <td>Page Middle Directory</td>
+    <td>It is the third level in the Linux page table hierarchy (for most modern configs) and sits between PUD and PTE.</td>
+  </tr>
+
+  <tr>
+    <td>PTE</td>
+    <td>Page Table Entry</td>
+    <td>It is the lowest (leaf) level of the Linux page table hierarchy and directly maps a virtual page to a physical page.<br>
+      <mark><b>Virtual Address -->  PGD (L0) → PUD (L1) → PMD (L2) → PTE (L3) → Physical Page (4 KB).</b></mark>
+    </td>
+  </tr>
+
+  <tr>
+    <td>LPA</td>
+    <td>Large Physical Address</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>PB</td>
+    <td>Petabyte</td>
+    <td>It’s a <b>unit of digital storage size.</b></td>
+  </tr>
+
+  <tr>
+    <td>TTBR0</td>
+    <td>Translation Table Base Register 0</td>
+    <td>It is is an <b>ARM64 CPU register</b> that tells the MMU <b>where the page tables for user space start.<br>
+      TTBR0_EL1 </b>holds the physical base address of the page tables used for translating user-space virtual addresses.
+    </td>
+  </tr>
+
+  <tr>
+    <td>TTBR1</td>
+    <td>Translation Table Base Register 1</td>
+    <td>For kernel paging table.</td>
+  </tr>
+
+  <tr>
+    <td>LLC</td>
+    <td>Last Level Cache</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>CR3</td>
+    <td>Control Register 3</td>
+    <td>CR3 is the control register that holds the physical address of the top-level page table (PGD/PML4) on x86/x86-64.<br>
+      <b>CR3</b> is the <b>x86/x86-64 equivalent of ARM64’s TTBR0/TTBR1.</b>
+    </td>
+  </tr>
 </table>
