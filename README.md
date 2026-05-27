@@ -98,4 +98,119 @@
    <td>Debug File System</td>
    <td></td>
  </tr>
+
+ <tr>
+   <td>Kconfig</td>
+   <td>Kernel Configuration</td>
+   <td>System for selecting kernel features</td>
+ </tr>
+
+ <tr>
+   <td>Kbuild</td>
+   <td>System for selecting kernel features</td>
+   <td>Kernel Build System</td>
+ </tr>
+
+ <tr>
+   <td>MMU</td>
+   <td>Memory Management Unit</td>
+   <td>Hardware for memory translation</td>
+ </tr>
+
+ <tr>
+   <td>SMP</td>
+   <td>Symmetric MultiProcessing</td>
+   <td>Multiple CPUs sharing memory</td>
+ </tr>
+
+ <tr>
+   <td>BSP</td>
+   <td>Board Support Package</td>
+   <td>Support files for hardware/SoC</td>
+ </tr>
+
+ <tr>
+   <td>DSP</td>
+   <td>Digital Signal Processor</td>
+   <td>Special processor for signal ops</td>
+ </tr>
+
+ <tr>
+   <td>HAL</td>
+   <td>Hardware Abstraction Layer</td>
+   <td>Layer between hw and OS</td>
+ </tr>
+
+ <tr>
+  <td>DTB</td>
+  <td>Device Tree Blob</td>
+  <td>Binary hardware description</td>
+ </tr>
+
+ <tr>
+   <td>DTS</td>
+   <td>Device Tree Source</td>
+   <td>Source format of DTB</td>
+ </tr>
+
+ <tr>
+   <td>OF</td>
+   <td>Open Firmware</td>
+   <td>Used for device tree bindings</td>
+ </tr>
+
+ <tr>
+   <td>SELinux</td>
+   <td>Security Enhanced Linux</td>
+   <td></td>
+ </tr>
+
+ <tr>
+   <td>MAC</td>
+   <td>Mandatory Access Control</td>
+   <td></td>
+ </tr>
+
+ <tr>
+   <td>PCIe</td>
+   <td>PCI Express</td>
+   <td></td>
+ </tr>
+
+ <tr>
+   <td>I2C</td>
+   <td>Inter-Integrated Circuit</td>
+   <td></td>
+ </tr>
+
+ <tr>
+   <td>.ko</td>
+   <td>Kernel object</td>
+   <td>Give us kernel functionality in a modular manner.</td>
+ </tr>
+
+ <tr>
+   <td>defconfig</td>
+   <td>Default Kernel Configuration</td>
+   <td></td>
+ </tr>
+
+ <tr>
+   <td>initramfs</td>
+   <td>Initial RAM filesystem</td>
+   <td>initramfs (Initial RAM Filesystem) is a tiny, temporary root filesystem that loads into your<br>
+    RAM right after GRUB but before your actual Ubuntu system starts.<br>
+    Think of it as the "bridge" that helps the kernel find and mount your real hard drive.<br>
+    <b>Why you need it (especially with your setup)</b><br>
+    <ul>
+      <li><b>NVMe: </b>The kernel needs a driver to talk to your NVMe SSD.</li>
+      <li><b>LVM: </b>Your root partition (/) is hidden inside a Logical Volume.</li>
+      <li><b>Kernel's Problem: </b>The kernel alone doesn't know how to "unlock" an LVM volume or talk to every possible SSD brand.
+      <li>The Solution: GRUB loads the initramfs file (found in /boot/initrd.img-...). This file contains the basic drivers (modules)<br>
+        and scripts needed to activate your LVM and mount the real / filesystem.</li>
+    </ul>
+  </td>
+ </tr>
+
+
 </table>
