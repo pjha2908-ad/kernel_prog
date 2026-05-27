@@ -146,15 +146,13 @@
     <td>Translation Lookaside Buffer</td>
     <td>CPU cache for speeding up address translation.</td>
   </tr>
+
+  <tr>
+    <td class="abbr">PGD</td>
+    <td class="fullform">Page Global Directory</td>
+    <td class="desc">Top-level page table in Linux memory management.</td>
+  </tr>
 </table>
-<table>
-        <tr>
-            <td class="abbr">PGD</td>
-            <td class="fullform">Page Global Directory</td>
-            <td class="desc">
-                Top-level page table in Linux memory management.
-            </td>
-        </tr>
 
         <tr>
             <td class="abbr">PUD</td>
