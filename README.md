@@ -74,93 +74,27 @@
 </table>
 
 <h3>Abbreviation: </h3>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linux Kernel Abbreviations</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-        }
-
-        th, td {
-            border: 1px solid #999;
-            padding: 10px;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: #d9534f;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .abbr {
-            font-weight: bold;
-            color: #004080;
-            white-space: nowrap;
-        }
-
-        .fullform {
-            font-weight: bold;
-            color: #222;
-        }
-
-        .desc {
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
-
-<h1>Linux Kernel Abbreviations</h1>
-
 <table>
-    <thead>
-        <tr>
-            <th>Abbreviation</th>
-            <th>Full Form</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        <tr>
-            <td class="abbr">GKI</td>
-            <td class="fullform">General Kernel Image</td>
-            <td class="desc"></td>
-        </tr>
-
-        <tr>
-            <td class="abbr">LKM</td>
-            <td class="fullform">Loadable Kernel Module</td>
-            <td class="desc">
-                Kernel code loaded/unloaded at runtime.
-            </td>
-        </tr>
-
-        <tr>
+  <tr>
+    <th>Abbreviation</th>
+    <th>Full Form</th>
+    <th>Description</th>
+  </tr>
+  
+  <tr>
+    <td>GKI</td>
+    <td>General Kernel Image.</td>
+    <td>GKI provides a generic, common Linux kernel image that works across many Android devices without vendors heavily modifying the core kernel.</td>
+  </tr>
+  
+  <tr>
+    <td>LKM</td>
+    <td>Loadable Kernel Module</td>
+    <td>Kernel code loaded/unloaded at runtime.</td>
+  </tr>
+  </table>
+  <table>
+  <tr>
             <td class="abbr">MMU</td>
             <td class="fullform">Memory Management Unit</td>
             <td class="desc">
@@ -359,9 +293,4 @@
                 Legacy disk partitioning and boot sector format.
             </td>
         </tr>
-
-    </tbody>
-</table>
-
-</body>
-</html>
+</>
