@@ -148,129 +148,100 @@
   </tr>
 
   <tr>
-    <td class="abbr">PGD</td>
-    <td class="fullform">Page Global Directory</td>
-    <td class="desc">Top-level page table in Linux memory management.</td>
+    <td>PGD</td>
+    <td>Page Global Directory</td>
+    <td>Top-level page table in Linux memory management.</td>
+  </tr>
+
+  <tr>
+    <td>PUD</td>
+    <td>Page Upper Directory</td>
+    <td>Second-level page table structure.</td>
+  </tr>
+
+  <tr>
+    <td>PMD</td>
+    <td>Page Middle Directory</td>
+    <td>Third-level page table structure.</td>
+  </tr>
+
+  <tr>
+    <td>PTE</td>
+    <td>Page Table Entry</td>
+    <td>Lowest-level page mapping entry.</td>
+  </tr>
+
+  <tr>
+    <td>RCU</td>
+    <td>Read-Copy-Update</td>
+    <td>High-performance synchronization mechanism for concurrent readers/writers.</td>
+  </tr>
+
+  <tr>
+    <td>IRQ</td>
+    <td>Interrupt Request</td>
+    <td>Signal sent by hardware to request CPU attention.</td>
+  </tr>
+
+  <tr>
+    <td>ISR</td>
+    <td>Interrupt Service Routine</td>
+    <td>Function executed when an interrupt occurs.</td>
+  </tr>
+
+  <tr>
+    <td>NMI</td>
+    <td>Non-Maskable Interrupt</td>
+    <td>High-priority interrupt that cannot be disabled.</td>
+  </tr>
+
+  <tr>
+    <td>KASAN</td>
+    <td>Kernel Address Sanitizer</td>
+    <td>Detects memory errors such as out-of-bounds access and use-after-free.</td>
+  </tr>
+
+  <tr>
+    <td>UBSAN</td>
+    <td>Undefined Behavior Sanitizer</td>
+    <td>Runtime checker for undefined behavior bugs.</td>
+  </tr>
+
+  <tr>
+    <td>eBPF</td>
+    <td>Extended Berkeley Packet Filter</td>
+    <td>In-kernel programmable virtual machine used for tracing, networking, and security.</td>
+  </tr>
+
+  <tr>
+    <td>BCC</td>
+    <td>BPF Compiler Collection</td>
+    <td>Toolkit for building and running eBPF programs.</td>
+  </tr>
+
+  <tr>
+    <td>VFS</td>
+    <td>Virtual File System</td>
+    <td>Abstraction layer providing a common filesystem interface.</td>
+  </tr>
+
+  <tr>
+    <td>inode</td>
+    <td>Index Node</td>
+    <td>Kernel object storing metadata about a file.</td>
+  </tr>
+
+  <tr>
+    <td>dentry</td>
+    <td>Directory Entry</td>
+    <td>VFS object representing a pathname component.</td>
+  </tr>
+
+  <tr>
+    <td>MBR</td>
+    <td>Master Boot Record</td>
+    <td>
+      Legacy disk partitioning and boot sector format.
+    </td>
   </tr>
 </table>
-
-        <tr>
-            <td class="abbr">PUD</td>
-            <td class="fullform">Page Upper Directory</td>
-            <td class="desc">
-                Second-level page table structure.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">PMD</td>
-            <td class="fullform">Page Middle Directory</td>
-            <td class="desc">
-                Third-level page table structure.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">PTE</td>
-            <td class="fullform">Page Table Entry</td>
-            <td class="desc">
-                Lowest-level page mapping entry.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">RCU</td>
-            <td class="fullform">Read-Copy-Update</td>
-            <td class="desc">
-                High-performance synchronization mechanism for concurrent readers/writers.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">IRQ</td>
-            <td class="fullform">Interrupt Request</td>
-            <td class="desc">
-                Signal sent by hardware to request CPU attention.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">ISR</td>
-            <td class="fullform">Interrupt Service Routine</td>
-            <td class="desc">
-                Function executed when an interrupt occurs.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">NMI</td>
-            <td class="fullform">Non-Maskable Interrupt</td>
-            <td class="desc">
-                High-priority interrupt that cannot be disabled.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">KASAN</td>
-            <td class="fullform">Kernel Address Sanitizer</td>
-            <td class="desc">
-                Detects memory errors such as out-of-bounds access and use-after-free.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">UBSAN</td>
-            <td class="fullform">Undefined Behavior Sanitizer</td>
-            <td class="desc">
-                Runtime checker for undefined behavior bugs.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">eBPF</td>
-            <td class="fullform">Extended Berkeley Packet Filter</td>
-            <td class="desc">
-                In-kernel programmable virtual machine used for tracing, networking, and security.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">BCC</td>
-            <td class="fullform">BPF Compiler Collection</td>
-            <td class="desc">
-                Toolkit for building and running eBPF programs.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">VFS</td>
-            <td class="fullform">Virtual File System</td>
-            <td class="desc">
-                Abstraction layer providing a common filesystem interface.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">inode</td>
-            <td class="fullform">Index Node</td>
-            <td class="desc">
-                Kernel object storing metadata about a file.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">dentry</td>
-            <td class="fullform">Directory Entry</td>
-            <td class="desc">
-                VFS object representing a pathname component.
-            </td>
-        </tr>
-
-        <tr>
-            <td class="abbr">MBR</td>
-            <td class="fullform">Master Boot Record</td>
-            <td class="desc">
-                Legacy disk partitioning and boot sector format.
-            </td>
-        </tr>
-</>
