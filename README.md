@@ -74,174 +74,28 @@
 </table>
 
 <h3>Abbreviation: </h3>
-<table>
+<table border="1">
   <tr>
     <th>Abbreviation</th>
     <th>Full Form</th>
     <th>Description</th>
   </tr>
-  
+
   <tr>
     <td>GKI</td>
-    <td>General Kernel Image.</td>
+    <td>General Kernel Image</td>
     <td>GKI provides a generic, common Linux kernel image that works across many Android devices without vendors heavily modifying the core kernel.</td>
   </tr>
-  
+
   <tr>
     <td>LKM</td>
     <td>Loadable Kernel Module</td>
     <td>Kernel code loaded/unloaded at runtime.</td>
   </tr>
-  
-  <tr>
-      <td>MMU</td>
-      <td>Memory Management Unit</td>
-      <td>Hardware responsible for virtual-to-physical memory translation.</td>
-  </tr>
 
-  <tr>
-    <td>DTB</td>
-    <td>Device Tree Blob</td>
-    <td>Binary hardware description used by the Linux kernel.</td>
-  </tr>
-
-  <tr>
-    <td>DTS</td>
-    <td>Device Tree Source</td>
-    <td>Human-readable source used to generate DTB.</td>
-  </tr>
-
-  <tr>
-    <td>GRUB</td>
-    <td>Grand Unified Bootloader</td>
-    <td>Default bootloader for x86/x86_64 Linux systems.</td>
-  </tr>
-
-  <tr>
-    <td>UEFI</td>
-    <td>Unified Extensible Firmware Interface</td>
-    <td>Modern replacement for BIOS with secure and flexible boot support.</td>
-  </tr>
-
-  <tr>
-    <td>BIOS</td>
-    <td>Basic Input Output System</td>
-    <td>Legacy firmware interface responsible for boot initialization.</td>
-  </tr>
-
-  <tr>
-    <td>RSS</td>
-    <td>Resident Set Size</td>
-    <td>Physical RAM currently occupied by a process.</td>
-  </tr>
-
-  <tr>
-    <td>PSS</td>
-    <td>Proportional Set Size</td>
-    <td>Shared memory divided proportionally among processes.</td>
-  </tr>
-
-  <tr>
-    <td>TLB</td>
-    <td>Translation Lookaside Buffer</td>
-    <td>CPU cache for speeding up address translation.</td>
-  </tr>
-
-  <tr>
-    <td>PGD</td>
-    <td>Page Global Directory</td>
-    <td>Top-level page table in Linux memory management.</td>
-  </tr>
-
-  <tr>
-    <td>PUD</td>
-    <td>Page Upper Directory</td>
-    <td>Second-level page table structure.</td>
-  </tr>
-
-  <tr>
-    <td>PMD</td>
-    <td>Page Middle Directory</td>
-    <td>Third-level page table structure.</td>
-  </tr>
-
-  <tr>
-    <td>PTE</td>
-    <td>Page Table Entry</td>
-    <td>Lowest-level page mapping entry.</td>
-  </tr>
-
-  <tr>
-    <td>RCU</td>
-    <td>Read-Copy-Update</td>
-    <td>High-performance synchronization mechanism for concurrent readers/writers.</td>
-  </tr>
-
-  <tr>
-    <td>IRQ</td>
-    <td>Interrupt Request</td>
-    <td>Signal sent by hardware to request CPU attention.</td>
-  </tr>
-
-  <tr>
-    <td>ISR</td>
-    <td>Interrupt Service Routine</td>
-    <td>Function executed when an interrupt occurs.</td>
-  </tr>
-
-  <tr>
-    <td>NMI</td>
-    <td>Non-Maskable Interrupt</td>
-    <td>High-priority interrupt that cannot be disabled.</td>
-  </tr>
-
-  <tr>
-    <td>KASAN</td>
-    <td>Kernel Address Sanitizer</td>
-    <td>Detects memory errors such as out-of-bounds access and use-after-free.</td>
-  </tr>
-
-  <tr>
-    <td>UBSAN</td>
-    <td>Undefined Behavior Sanitizer</td>
-    <td>Runtime checker for undefined behavior bugs.</td>
-  </tr>
-
-  <tr>
-    <td>eBPF</td>
-    <td>Extended Berkeley Packet Filter</td>
-    <td>In-kernel programmable virtual machine used for tracing, networking, and security.</td>
-  </tr>
-
-  <tr>
-    <td>BCC</td>
-    <td>BPF Compiler Collection</td>
-    <td>Toolkit for building and running eBPF programs.</td>
-  </tr>
-
-  <tr>
-    <td>VFS</td>
-    <td>Virtual File System</td>
-    <td>Abstraction layer providing a common filesystem interface.</td>
-  </tr>
-
-  <tr>
-    <td>inode</td>
-    <td>Index Node</td>
-    <td>Kernel object storing metadata about a file.</td>
-  </tr>
-
-  <tr>
-    <td>dentry</td>
-    <td>Directory Entry</td>
-    <td>VFS object representing a pathname component.</td>
-  </tr>
-
-  <tr>
-    <td>MBR</td>
-    <td>Master Boot Record</td>
-    <td>
-      Legacy disk partitioning and boot sector format.
-    </td>
-  </tr>
+ <tr>
+   <td>debugfs</td>
+   <td>Debug File System</td>
+   <td></td>
+ </tr>
 </table>
