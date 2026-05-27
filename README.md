@@ -72,3 +72,296 @@
     </td>
   </tr>
 </table>
+
+<h3>Abbreviation: </h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Kernel Abbreviations</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .abbr {
+            font-weight: bold;
+            color: #004080;
+            white-space: nowrap;
+        }
+
+        .fullform {
+            font-weight: bold;
+            color: #222;
+        }
+
+        .desc {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Linux Kernel Abbreviations</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Abbreviation</th>
+            <th>Full Form</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td class="abbr">GKI</td>
+            <td class="fullform">General Kernel Image</td>
+            <td class="desc"></td>
+        </tr>
+
+        <tr>
+            <td class="abbr">LKM</td>
+            <td class="fullform">Loadable Kernel Module</td>
+            <td class="desc">
+                Kernel code loaded/unloaded at runtime.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">MMU</td>
+            <td class="fullform">Memory Management Unit</td>
+            <td class="desc">
+                Hardware responsible for virtual-to-physical memory translation.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">DTB</td>
+            <td class="fullform">Device Tree Blob</td>
+            <td class="desc">
+                Binary hardware description used by the Linux kernel.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">DTS</td>
+            <td class="fullform">Device Tree Source</td>
+            <td class="desc">
+                Human-readable source used to generate DTB.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">GRUB</td>
+            <td class="fullform">Grand Unified Bootloader</td>
+            <td class="desc">
+                Default bootloader for x86/x86_64 Linux systems.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">UEFI</td>
+            <td class="fullform">Unified Extensible Firmware Interface</td>
+            <td class="desc">
+                Modern replacement for BIOS with secure and flexible boot support.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">BIOS</td>
+            <td class="fullform">Basic Input Output System</td>
+            <td class="desc">
+                Legacy firmware interface responsible for boot initialization.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">RSS</td>
+            <td class="fullform">Resident Set Size</td>
+            <td class="desc">
+                Physical RAM currently occupied by a process.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">PSS</td>
+            <td class="fullform">Proportional Set Size</td>
+            <td class="desc">
+                Shared memory divided proportionally among processes.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">TLB</td>
+            <td class="fullform">Translation Lookaside Buffer</td>
+            <td class="desc">
+                CPU cache for speeding up address translation.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">PGD</td>
+            <td class="fullform">Page Global Directory</td>
+            <td class="desc">
+                Top-level page table in Linux memory management.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">PUD</td>
+            <td class="fullform">Page Upper Directory</td>
+            <td class="desc">
+                Second-level page table structure.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">PMD</td>
+            <td class="fullform">Page Middle Directory</td>
+            <td class="desc">
+                Third-level page table structure.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">PTE</td>
+            <td class="fullform">Page Table Entry</td>
+            <td class="desc">
+                Lowest-level page mapping entry.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">RCU</td>
+            <td class="fullform">Read-Copy-Update</td>
+            <td class="desc">
+                High-performance synchronization mechanism for concurrent readers/writers.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">IRQ</td>
+            <td class="fullform">Interrupt Request</td>
+            <td class="desc">
+                Signal sent by hardware to request CPU attention.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">ISR</td>
+            <td class="fullform">Interrupt Service Routine</td>
+            <td class="desc">
+                Function executed when an interrupt occurs.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">NMI</td>
+            <td class="fullform">Non-Maskable Interrupt</td>
+            <td class="desc">
+                High-priority interrupt that cannot be disabled.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">KASAN</td>
+            <td class="fullform">Kernel Address Sanitizer</td>
+            <td class="desc">
+                Detects memory errors such as out-of-bounds access and use-after-free.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">UBSAN</td>
+            <td class="fullform">Undefined Behavior Sanitizer</td>
+            <td class="desc">
+                Runtime checker for undefined behavior bugs.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">eBPF</td>
+            <td class="fullform">Extended Berkeley Packet Filter</td>
+            <td class="desc">
+                In-kernel programmable virtual machine used for tracing, networking, and security.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">BCC</td>
+            <td class="fullform">BPF Compiler Collection</td>
+            <td class="desc">
+                Toolkit for building and running eBPF programs.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">VFS</td>
+            <td class="fullform">Virtual File System</td>
+            <td class="desc">
+                Abstraction layer providing a common filesystem interface.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">inode</td>
+            <td class="fullform">Index Node</td>
+            <td class="desc">
+                Kernel object storing metadata about a file.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">dentry</td>
+            <td class="fullform">Directory Entry</td>
+            <td class="desc">
+                VFS object representing a pathname component.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="abbr">MBR</td>
+            <td class="fullform">Master Boot Record</td>
+            <td class="desc">
+                Legacy disk partitioning and boot sector format.
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
