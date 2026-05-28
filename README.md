@@ -12,6 +12,144 @@
     <th>Command</th>
     <th>Description</th>
   </tr>
+
+  <tr>
+    <td>head Makefile</td>
+    <td>To know kernel version. (Check top-level Makefile)</td>
+  </tr>
+  
+  <tr>
+    <td>insmod</td>
+    <td>Insert module. It loads a kernel module (.ko file) directly into the running kernel. </td>
+  </tr>
+  
+  <tr>
+    <td>lsmod</td>
+    <td><b>List all currently loaded kernel modules.</b><br>
+      Each line has 3 parts:
+      <ul>
+        <li> Module name:  Name of the kernel module</li>
+        <li>Size: Module size in bytes</li>
+        <li>Usage Count</li>
+        <li>Used by: How many other modules depend on it</li>
+    </td>
+  </tr>
+
+  <tr>
+    <td>lspci</td>
+    <td>lspci is a Linux command that <b>lists all PCI and PCI‑Express devices</b> on your system.<br>
+      PCI devices include:<br>
+      <ul>
+        <li>Network cards (e.g., e1000e, igb, ixgbe)</li>
+        <li>Storage controllers (NVMe, SATA)</li>
+        <li>GPUs</li>
+        <li>USB controllers</li>
+        <li>Audio devices</li>
+        <li>Bridges, root ports, PCI switches</li>
+      </ul><br>
+      <mark><b>Options: </b></mark><br>
+      <ol>
+        <li><b>-vv: </b>Show detailed information.</li>
+        <li><b>-k: </b>Show which kernel driver is attached.</li>
+        <li><b>-nn: </b>Show device class + vendor names</li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
+    <td>make defconfig</td>
+    <td><b>Default Kernel Configuration.</b><br>
+      It generates a standard, safe, general-purpose configuration.
+      <ul>
+        <li> Boots on nearly all systems</li>
+        <li>Enables commonly used filesystems (ext4, btrfs, FAT, etc.)</li>
+        <li>Enables basic networking, USB, PCI, etc.</li>
+        <li>Includes many drivers → so build is still large</li>
+        <li>Does not include all the modules your Ubuntu kernel has</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>make distclean</td>
+    <td>mrproper + remove editor backup and patch files. run this cmd in<br>
+      the root of the kernel source tree, useful when you want to restart<br>
+      the kernel build procedure from scratch. 
+    </td>
+  </tr>
+  
+  <tr>
+    <td>make help</td>
+    <td>to see make command option details</td>
+  </tr>
+
+  <tr>
+    <td>make -j8</td>
+    <td>implifying up to eight processes performing the build in parallel. All the<br>
+      build processes write to the same stdout location - the console or terminal<br>
+      window. Hence, the output may be out of order or mixed up.
+    </td>
+  </tr>
+
+  <tr>
+    <td>make localmodconfig</td>
+    <td>It reads currently loaded kernel modules from /proc/modules,<br>
+      hardware info from /sys, /proc, lsmod and creates a new .config file.
+      <ul>
+        <li> It keeps only the kernel features your system actually uses.</li>
+        <li> Removes thousands of unused drivers.</li>
+        <li> Makes kernel compilation 5-10 x faster.</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>make menuconfig</td>
+    <td><b>UI to fine-tune kernel configuration.</b>
+      <ul>
+        <li><b><mark>[*]: </mark></b>On, feature compiled and built in to the<br>
+          kernel image. (y)
+        </li>
+        <li><b><mark>[ ]: </mark></b>Off, not built at all (n).</li>
+        <li><b><mark>&lt;*&gt;: </mark></b>One feature compiled and built in<br>
+          the kernel module (y).
+        </li>
+        <li><b><mark>&lt;M&gt;: </mark></b> Module, feature compiled and built as<br>
+          a kernel module (an LKM) (m)
+        </li>
+        <li><b><mark>&lt;&gt;: </mark></b> Off, not built at all (n)</li>
+        <li><b><mark>{ . }: </mark></b>A dependency exists for this config option;<br>
+          hence, it's required to be built or compiled as either a module (m) or to<br>
+          the kernel image (y).
+        </li>
+        <li><b><mark> -*- : </mark></b>A dependency requires this item to be compiled<br>
+          in (y).
+        </li>
+        <li><b><mark>( … ): </mark>Prompt: </b>an alphanumeric input is required.<br>
+          Press the Enter key while on this option and a prompt box appears.
+        </li>
+        <li><b><mark>&lt;Menu name&gt  ---></mark></b> A sub-menu follows. Press Enter<br>
+          on this item to naqvigate to the sub-menu. 
+    </td>
+  </tr>
+
+  <tr>
+    <td>make modules</td>
+    <td>Compile .ko (kernel object) file </td>
+  </tr>
+
+  <tr>
+    <td>make modules_install</td>
+    <td>Getting the kernel modules installed. Sudo is not required if INSTALL_MOD_PATH refers<br>
+      a location that does not require root for writing.
+    </td>
+  </tr>
+
+  <tr>
+    <td>make oldconfig</td>
+    <td>Update current config utilizing a provided .config as base</td>
+  </tr>
+  
   <tr>
     <td>modinfo -p &lt;module_name&gt;</td>
     <td>
@@ -52,26 +190,17 @@
       device, it must be used carefully.</mark></b>
     </td>
   </tr>
+
   <tr>
-    <td>lspci</td>
-    <td>lspci is a Linux command that <b>lists all PCI and PCI‑Express devices</b> on your system.<br>
-      PCI devices include:<br>
-      <ul>
-        <li>Network cards (e.g., e1000e, igb, ixgbe)</li>
-        <li>Storage controllers (NVMe, SATA)</li>
-        <li>GPUs</li>
-        <li>USB controllers</li>
-        <li>Audio devices</li>
-        <li>Bridges, root ports, PCI switches</li>
-      </ul><br>
-      <mark><b>Options: </b></mark><br>
-      <ol>
-        <li><b>-vv: </b>Show detailed information.</li>
-        <li><b>-k: </b>Show which kernel driver is attached.</li>
-        <li><b>-nn: </b>Show device class + vendor names</li>
-      </ol>
-    </td>
+    <td>time &lt;cmd_name&gt;</td>
+    <td>To see how long a command takes to execute.</td>
   </tr>
+  
+  <tr>
+    <td>rmmod</td>
+    <td>Remove Module</td>
+  </tr>
+  
 </table>
 
 <h3>Abbreviation: </h3>
