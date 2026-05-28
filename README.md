@@ -1,4 +1,4 @@
-<img width="240" height="38" alt="image" src="https://github.com/user-attachments/assets/71829d9e-3291-4a7d-b245-dcfe78ce2498" /><h3>Links: </h3>
+<h3><mark>Link: <br>========</mark></h3>
 <ul>
   <li>https://thelearningjourneyebooks.com/ebooks/TheLinuxKernelDataStructuresJourney_v2.0_April2024.pdf</li>
   <li>https://medium.com/embedworld/maximizing-performance-in-embedded-linux-with-cache-aware-programming-ec3d7ad21e5a</li>
