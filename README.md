@@ -86,6 +86,12 @@
    <td>Kernel object</td>
    <td>Give us kernel functionality in a modular manner.</td>
   </tr>
+
+  <tr>
+   <td>ASAN</td>
+   <td>Address SANitizer</td>
+   <td></td>
+  </tr>
   
   <tr>
    <td>ASLR</td>
@@ -111,6 +117,12 @@
    <td>Buffer Overflow</td>
    <td></td>
   </tr>
+
+  <tr>
+    <td>BSA</td>
+    <td>Buddy System Allocator</td>
+    <td></td>
+  </tr>
   
   <tr>
    <td>BSP</td>
@@ -122,6 +134,18 @@
    <td>CFS</td>
    <td>Completely Fair Scheduler</td>
    <td></td>
+  </tr>
+
+  <tr>
+    <td>CISC</td>
+    <td>Complex Instruction Set Computing</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>CMA</td>
+    <td>Contiguous Memory Allocator</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -157,6 +181,18 @@
   </tr>
 
   <tr>
+   <td>CTF</td>
+   <td>Common Trace Format</td>
+   <td></td>
+  </tr>
+
+  <tr>
+   <td>DAMON</td>
+   <td>Data Access MONitor</td>
+   <td>Capture and analyse memory access patterns of user-space process.</td>
+  </tr>
+
+  <tr>
    <td>debugfs</td>
    <td>Debug File System</td>
    <td></td>
@@ -172,6 +208,12 @@
    <td>DKMS</td>
    <td>Dynamic Kernel Module Support</td>
    <td>Framework for module auto-loading.</td>
+  </tr>
+
+  <tr>
+   <td>DSO</td>
+   <td>Dynamic Shared Object</td>
+   <td></td>
   </tr>
   
   <tr>
@@ -235,6 +277,12 @@
     <td>File System User ID</td>
     <td>File-System specific checks.</td>
   </tr>
+
+  <tr>
+    <td>GFP</td>
+    <td>Get Free Page</td>
+    <td></td>
+  </tr>  
   
   <tr>
     <td>GKI</td>
@@ -308,11 +356,31 @@
   </tr>
 
   <tr>
-    <td>initrd</td>
-    <td>Initial RAM disk</td>
-    <td>initrd is considered as old term. Nowadays, we more often use the term initramfs in its place.</td>
+    <td>IoF</td>
+    <td>Integer Overflow</td>
+    <td></td>
   </tr>
- 
+
+  <tr>
+    <td>KASAN</td>
+    <td>Kernel Address SANitizer</td>
+    <td>It is a dynamic memory error detector used primarily to find out-of-bounds(buffer overflow/underflow),<br>
+      use-after-free bug and double-free access.
+    </td>
+  </tr>
+
+  <tr>
+    <td>KCSAN</td>
+    <td>Kernel Concurrency SANitizer</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Kbuild</td>
+    <td>System for selecting kernel features</td>
+    <td>Kernel Build System</td>
+  </tr>
+  
   <tr>
     <td>Kconfig</td>
     <td>Kernel Configuration</td>
@@ -320,9 +388,21 @@
   </tr>
 
   <tr>
-    <td>Kbuild</td>
-    <td>System for selecting kernel features</td>
-    <td>Kernel Build System</td>
+    <td>KMSAN</td>
+    <td>Kernel Memory Sanitizer</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>KASLR</td>
+    <td>Kernel ASLR</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>KSE</td>
+    <td>Kernel Schedulable Entity</td>
+    <td>In linux, the KSE is a thread, not a process.</td>
   </tr>
 
   <tr>
@@ -342,11 +422,28 @@
     <td>Large Physical Address</td>
     <td></td>
   </tr>
+
+  <tr>
+    <td>LTTng</td>
+    <td>Linux Trace Toolkit- next generation</td>
+    <td>Powerful and popular open-source tracing system for Linux Kernel.</td>
+  </tr>
   
   <tr>
     <td>MAC</td>
     <td>Mandatory Access Control</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>min_flt</td>
+    <td>nnumber of minor page faults</td>
+    <td>A <b>minor page fault </b> occurs when:
+      <ul>
+        <li>The page is <b>already in RAM</b></li>
+        <li>But <b>not mapped</b> in the process page table yet</li>
+      </ul>
+    </td>
   </tr>
   
   <tr>
@@ -356,9 +453,33 @@
   </tr>
 
   <tr>
+    <td>NUMA</td>
+    <td>Non-Uniform Memory Access</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>nvcsw</td>
+    <td>number of non-voluntary context switches</td>
+    <td>A <b>non-voluntary context switch</b> happens when:
+      <ul>
+        <li>the kernel forces a task off the CPU</li>
+        <li>the task did not explicitly give up the CPU</li>
+      </ul>
+      In /proc/<pid>/stat, min_flt is field number 10.
+    </td>
+  </tr>
+
+  <tr>
     <td>OF</td>
     <td>Open Firmware</td>
     <td>Used for device tree bindings</td>
+  </tr>
+
+  <tr>
+    <td>PA</td>
+    <td>Page Allocator</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -370,6 +491,12 @@
   <tr>
     <td>PCIe</td>
     <td>PCI Express</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>PFN</td>
+    <td>Page Frame Numbers</td>
     <td></td>
   </tr>
  
@@ -526,6 +653,12 @@
         <li>Drive size: the BIOS supports only up to 2.2 TB disks, whereas UEFI can support disks upto 9 ZB(zettabytes) in size.</li>
       </ul>
     </td>
+  </tr>
+
+  <tr>
+    <td>UMR</td>
+    <td>Uninitialized Memory Reads</td>
+    <td></td>
   </tr>
 
   <tr>
