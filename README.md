@@ -213,13 +213,13 @@
           returned so the caller<br> can try again. 
         </li>
       </ol><br>
-      bool cmpxchg(int *address, int expected, int new_value) {<br>
-        if (*address == expected) {<br>
-          *address = new_value;<br>
-          return true; // Success!<br>
+      <b><mark>bool cmpxchg(int *address, int expected, int new_value) {<br>
+        &nbsp;&nbsp;if (*address == expected) {<br>
+          &nbsp;*address = new_value;<br>
+          &nbsp;return true; // Success!<br>
         }<br>
         return false; // Someone else changed it<br>
-      }<br>
+      }<br></mark></b>
     </td>
   </tr>
 
