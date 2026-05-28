@@ -4,7 +4,7 @@
   <li>https://medium.com/embedworld/maximizing-performance-in-embedded-linux-with-cache-aware-programming-ec3d7ad21e5a</li>
 </ul>
 
-<h3><mark>Command: </mark></h3>
+<h3><mark><b>Command: <br>==========</b></mark></h3>
 <table>
   <tr>
     <th>Command</th>
@@ -508,7 +508,48 @@
   </tr>
 </table>
 
-<h3>Abbreviation: </h3>
+<h3><mark><b>Signals: <br>==========</b></mark></h3>
+<table border="1">
+  <th>Signal</th>
+  <th>Description</th>
+
+  <tr>
+    <td>PF_EXITING</td>
+    <td></td>
+  </tr>
+  
+  <tr>
+    <td>SIGCHLD</td>
+    <td><b>SIGCHLD (Signal: Child): </b> is the notification the kernel sends to a parent<br>
+      process whenever one of its child processes terminates, stops, or continues.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>SIGSTOP</td>
+    <td><b>SIGSTOP</b> is the "hard pause" button for a process. SIGSTOP cannot be ignored,<br>
+      blocked, or handled by the process. When the kernel sends this signal, the process stops<br>
+      exactly where it is immediately.
+    </td>
+  </tr>
+
+  <tr>
+    <td>SIGTTIN</td>
+    <td><b>SIGTTIN (Signal Terminal Input): </b> is the signal sent to a background process when<br>
+      it attempts to read from its controlling terminal (keyboard).
+    </td>
+  </tr>
+  
+  <tr>
+    <td>SIGTTOU</td>
+    <td><b>Signal: Terminal Output.</b> This is the signal sent to a background process<br>
+      when it tries to write data to its controlling terminal (tty).
+    </td>
+  </tr>
+  
+</table>
+
+<h3><mark><b>Abbreviation: <br>===========</b></mark></h3>
 <table border="1">
   <tr>
     <th>Abbreviation</th>
