@@ -1,5 +1,3 @@
-<img width="2128" height="38" alt="image" src="https://github.com/user-attachments/assets/5418de70-a3c3-431b-93ed-5ea18fba49cf" /># kernel_prog
-
 <h3>Links: </h3>
 <ul>
   <li>https://thelearningjourneyebooks.com/ebooks/TheLinuxKernelDataStructuresJourney_v2.0_April2024.pdf</li>
@@ -473,6 +471,41 @@
     <td>%pI6</td>
   </tr>
   
+</table>
+
+<h3><mark>Error Meaning:<br>==========</mark></h3>
+<table border="1">
+  <th>Error</th>
+  <th>Meaning</th>
+
+  <tr>
+    <td>ESRCH</td>
+    <td>Error - No Such Process</td>
+  </tr>
+  
+  <tr>
+    <td>EINVAL</td>
+    <td>Invalid Argument</td>
+  </tr>
+
+  <tr>
+    <td>ERESTARTSYS</td>
+    <td><b>-ERESTARTSYS</b> is a specialized error code used to handle interruptions<br>
+      caused by signals during a blocking system call. It is primarily used in <br>
+      conjunction with interruptible sleeps (such as mutex_lock_interruptible or<br>
+      wait_event_interruptible).
+    </td>
+  </tr>
+
+  <tr>
+    <td>EINTR</td>
+    <td><b>EINTR (Error code 4)</b> stands for <b>Interrupted System Call.</b></td>
+  </tr>
+
+  <tr>
+    <td>EPERM</td>
+    <td><b>EPERM (Error code 1) </b>stands <b>for Operation Not Permitted.</b></td>
+  </tr>
 </table>
 
 <h3>Abbreviation: </h3>
