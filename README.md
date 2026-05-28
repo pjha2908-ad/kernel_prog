@@ -2071,7 +2071,7 @@
 </table>
 
 <h3><mark><b>Questions: <br>===========</b></mark></h3>
-<mark><b>Q. When to use a Softirq?</b></mark>
+<mark><b>Q. When to use a Softirq?</b></mark><br>
 <b>Ans: </b>Use a softirq only if you are writing core kernel infrastructure that requires extreme performance and massive parallelism.
 <ul>
   <li><b>Parallelism: </b>The same softirq can run on multiple CPUs simultaneously.</li>
@@ -2080,7 +2080,7 @@
   <li><b>Static: </b>You cannot add new softirqs without modifying and recompiling the core kernel.</li>
 </ul>
 
-<mark><b>Q. When to use a Tasklet?</b></mark>
+<mark><b>Q. When to use a Tasklet?</b></mark><br>
 <b>Ans: </b>Use a tasklet if you are maintaining legacy driver code that requires a simple, atomic bottom half.
   <ul>
     <li><b>Ease of Use: </b>Tasklets are dynamically allocatable and don't require you to worry about multi-CPU concurrency.</li>
@@ -2088,7 +2088,7 @@
     <li><b>Execution: </b>They always run on the same CPU that scheduled them, which is good for cache locality.</li>
   </ul>
   
-<mark><b>Q. In SMP can 1 method run critical section on 1 core and interrupt handler on 2nd core for the same critical section?</b></mark>
+<mark><b>Q. In SMP can 1 method run critical section on 1 core and interrupt handler on 2nd core for the same critical section?</b></mark><br>
 <b>Ans: Yes,</b> Without proper synchronization, a critical section can be accessed simultaneously by a process on one core and an interrupt handler on another.
 <b>The Scenario: The "Race Condition"</b>
 Imagine you have a shared data structure protected by a standard mutex or a simple flag.
@@ -2098,6 +2098,43 @@ Imagine you have a shared data structure protected by a standard mutex or a simp
   <li><b>The Conflict: </b>If the ISR on Core 2 tries to access the same data structure while Thread A is still holding it on Core 1, you have a collision.</li>
 </ul>
 
-<mark><b>Q. Why standard Mutexes fail here</b></mark>
+<mark><b>Q. Why standard Mutexes fail here?</b></mark><br>
+<b>Ans: </b>In the Linux kernel, an Interrupt Handler <b>cannot sleep.</b> Because standard mutexes (mutex_lock) put a thread to sleep if the lock is held, you cannot use them inside an interrupt handler. If the ISR tries to take a mutex held by Core 1, the system will likely crash or panic.
 
+<mark><b>Q. why spin_lock will not work in this case?</b></mark><br>
+<b>Ans: </b>A simple spin_lock fails because it does not account for the same-core deadlock scenario. Even in an SMP (Symmetric Multiprocessing) system, an interrupt can fire on the same core that is currently holding the lock.
+
+<mark><b>The Local Deadlock (Self-Deadlock)</b></mark><br>
+If a process on Core 1 acquires a simple spin_lock, it successfully enters the critical section. However, if a hardware interrupt occurs on that same core (Core 1) before the lock is released:
+<ul>
+  <li> The kernel stops the process and starts the Interrupt Service Routine (ISR).</li>
+  <li> If the ISR tries to acquire the same spinlock, it will see the lock is already "taken" and will begin spinning (looping) to wait for it.</li>
+  <li> The process that holds the lock can never run to release it because it has been preempted by the very ISR that is now spinning.</li>
+  <li>Result: The core is deadlocked in a permanent "spin".</li>
+</ul>
+
+<mark><b>Q. Why SMP Doesn't Solve This?</b></mark><br>
+<b>Ans: </b>While you might think the ISR on Core 2 would be fine (it would just spin until Core 1 finishes), you cannot guarantee which core will receive a specific interrupt. If the interrupt happens to hit the core holding the lock, the entire system can hang.
+
+<mark><b>In an SMP system, an interrupt arriving on Core 2 cannot physically preempt a process running on Core 1. So why is spin_lock still "wrong"?</b></mark><br>
+<b>Ans: </b> The reason you are told a "simple spin_lock will not work" is not because of Core 2; it is because of the <b>uncertainty of interrupt routing.</b>
+In most modern systems, the <b>Programmable Interrupt Controller (APIC)</b> decides which core gets an interrupt. You cannot guarantee the interrupt will always go to Core 2. If that same interrupt happens to be routed to Core 1 while <b>Core 1 </b>is holding the lock:
+<ul>
+  <li>Core 1 stops the process to handle the interrupt.</li>
+  <li>The ISR on Core 1 tries to grab the lock Core 1 is already holding.</li>
+  <li><b>Deadlock: </b>Core 1 spins forever waiting for itself.</li>
+</ul>
+
+<mark><b>The Solution: Spinlocks with IRQ Disabling</b></mark><br>
+To protect a critical section from being accessed by both a thread and an interrupt handler across different cores, you must use a Spinlock combined with Interrupt Disabling.
+<mark><b>spin_lock_irqsave()</b></mark><br>
+This is the "gold standard" for this problem. When you call this:<br>
+<ul>
+  <li>On the local core (Core 1): It disables interrupts. This prevents an interrupt from firing on this core and trying to re-enter the critical section.</li>
+  <li> Across the system: It acquires a spinlock. If an interrupt fires on Core 2 and tries to enter the same critical section, it will "spin" (loop rapidly) waiting for Core 1 to release the lock.</li>
+</ul>
+
+<mark><b>Q. spin_lock() works in process_context or atomic_context?</b></mark><br>
+<b>Ans: spin_lock()</b>is versatile and can be used in both <b>Process Context</b> and <b>Atomic Context,</b> but its behavior changes how the system treats those contexts. 
+ 
 
