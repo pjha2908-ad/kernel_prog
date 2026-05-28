@@ -6,7 +6,7 @@
   <li>https://medium.com/embedworld/maximizing-performance-in-embedded-linux-with-cache-aware-programming-ec3d7ad21e5a</li>
 </ul>
 
-<h3>Command: </h3>
+<h3><mark>Command: </mark></h3>
 <table>
   <tr>
     <th>Command</th>
@@ -86,6 +86,7 @@
   <tr>
     <td>grep &lt;option&gt;</td>
     <td>
+      <b>Options: </b>
       <ul>
         <li><b>-v: </b>In grep, the -v (or --invert-match) flag is used to invert the search.<br>
           Instead of showing lines that match a pattern, it excludes them and displays only the<br>
@@ -421,6 +422,55 @@
   <tr>
     <td>wc -l</td>
     <td>counts the number of lines in input.</td>
+  </tr>
+  
+</table>
+
+<h3><mark>C Specifier: <br>=========</mark></h3>
+<table border="1">
+  <th>Type</th>
+  <th>Specifier</th>
+  
+  <tr>
+    <td>size_t</td>
+    <td>%zu</td>
+  </tr>
+
+  <tr>
+    <td>ssize_t</td>
+    <td>%zd</td>
+  </tr>
+
+  <tr>
+    <td>Kernel pointer for security (hashed value</td>
+    <td>%pk</td>
+  </tr>
+
+  <tr>
+    <td>Actual pointer (don't use in production)</td>
+    <td>%px</td>
+  </tr>
+
+  <tr>
+    <td>Physical Address (kptr_restrict)</td>
+    <td>%pa</td>
+  </tr>
+  
+  <tr>
+    <td>Raw buffer as a string of hex characters</td>
+    <td><b>%*ph</b> (* is replaced by the number of characters). Use it for buffer within 64 chars,<br>
+      and use the print_hex_dump_bytes() routine for more.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IPv4 address</td>
+    <td>%pI4</td>
+  </tr>
+
+  <tr>
+    <td>IPv6 address</td>
+    <td>%pI6</td>
   </tr>
   
 </table>
