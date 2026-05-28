@@ -738,14 +738,40 @@
       000001d0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
       000001e0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
       000001f0: 0000 0000 0000 0000 0000 0000 0000 <b>55<mark>aa</mark></b>  ..............U.<br>
-
       <ul>
         <li><b>000001c0 (Partition Entry): </b>The data starting with 0200 ee... is a single dummy partition entry of type 0xEE.<br>
           This tells old BIOS systems, "This disk is full, don't touch it."
-        </li><b>000001fe (Boot Signature): </b>The 55aa at the very end is the standard "magic number" that marks this as a valid bootable sector.<br>
-          <b>MBR Structure Breakdown:</b><br>
-            The 512 bytes are strictly divided into three main components: <br>
+        </li>
+        <li><b>000001fe (Boot Signature): </b>The 55aa at the very end is the standard "magic number" that
+          marks this as a valid bootable sector.<br>
+        </li>
       </ul>
+      <b>MBR Structure Breakdown:</b><br>
+        The 512 bytes are strictly divided into three main components: <br>
+        <table>
+          <th>Component</th>
+          <th>Size</th>
+          <th>Offset(Hex)</th>
+          <th>Purpose</th>
+          <tr>
+            <td>Bootstrap Code</td>
+            <td>446 bytes</td>
+            <td>0x000–0x1BD</td>
+            <td>Executable code (bootloader) that finds the active partition and starts the OS.</td>
+          </tr>
+          <tr>
+            <td>Partition Table</td>
+            <td>64 bytes</td>
+            <td>0x1BE–0x1FD</td>
+            <td>Contains 4 entries (16 bytes each) describing the disk's primary partitions.</td>
+          </tr>
+          <tr>
+            <td>Boot Signature</td>
+            <td>2 bytes</td>
+            <td>0x1FE–0x1FF</td>
+            <td>The "magic number" 0x55AA, which validates the sector as a bootable MBR.</td>
+          </tr>
+        </table>
     </td>
   </tr>
 
