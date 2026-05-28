@@ -473,6 +473,53 @@
   
 </table>
 
+<h3><b><mark>printk log level: <br>=============</mark></b></h3>
+<table border="1">
+  <th>log level</th>
+  <th>Value</th>
+  
+  <tr>
+    <td>KERN_EMERG: </td>
+    <td>0</td>
+  </tr>
+
+  <tr>
+    <td>KERN_ALERT: </td>
+    <td>1</td>
+  </tr>
+
+  <tr>
+    <td>KERN_CRIT: </td>
+    <td>2</td>
+  </tr>
+
+  <tr>
+    <td>KERN_ERR: </td>
+    <td>3</td>
+  </tr>
+
+  <tr>
+    <td>KERN_WARNING: </td>
+    <td>4</td>
+  </tr>
+
+  <tr>
+    <td>KERN_NOTICE: </td>
+    <td>5</td>
+  </tr>
+
+  <tr>
+    <td>KERN_INFO: </td>
+    <td>6</td>
+  </tr>
+
+  <tr>
+    <td>KERN_DEBUG: </td>
+    <td>7</td>
+  </tr>
+  
+</table>
+
 <h3><mark>Error Meaning:<br>==========</mark></h3>
 <table border="1">
   <th>Error</th>
