@@ -811,19 +811,25 @@
             <td>Bootstrap Code</td>
             <td>446 bytes</td>
             <td>0x000–0x1BD</td>
-            <td>Executable code (bootloader) that finds the active partition and starts the OS.</td>
+            <td>Executable code (bootloader) that finds the active partition and<br>
+              starts the OS.
+            </td>
           </tr>
           <tr>
             <td>Partition Table</td>
             <td>64 bytes</td>
             <td>0x1BE–0x1FD</td>
-            <td>Contains 4 entries (16 bytes each) describing the disk's primary partitions.</td>
+            <td>Contains 4 entries (16 bytes each) describing the disk's primary<br>
+              partitions.
+            </td>
           </tr>
           <tr>
             <td>Boot Signature</td>
             <td>2 bytes</td>
             <td>0x1FE–0x1FF</td>
-            <td>The "magic number" 0x55AA, which validates the sector as a bootable MBR.</td>
+            <td>The "magic number" 0x55AA, which validates the sector as a bootable<br>
+              MBR.
+            </td>
           </tr>
         </table>
     </td>
