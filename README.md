@@ -520,8 +520,9 @@
   <tr>
     <td>HRT</td>
     <td>High-resolution timers</td>
-    <td>It is the interrupt source for the kernel's high-precision timing subsystem, which allows<br>
-      for microsecond-level (or even nanosecond-level) accuracy, far exceeding the old "jiffies" system.
+    <td>It is the interrupt source for the kernel's high-precision timing subsystem, which<br>
+      allows for microsecond-level (or even nanosecond-level) accuracy, far exceeding the <br>
+      old "jiffies" system.
     </td>
   </tr>
   
@@ -534,28 +535,29 @@
   <tr>
     <td>IDR</td>
     <td>Integer ID Management</td>
-    <td>The <b>IDR (Integer ID Management)</b> is a library used to map small integer identifiers<br>
-      (IDs)to pointer-based data structures. It solves the problem of efficiently allocating, managing,<br>
-      and looking up unique IDs—such as file descriptors, process IDs (PIDs),or device instance <br>
-      numbers—without the high memory overhead of a large array or the slow lookup times of a linked list.
+    <td>The <b>IDR (Integer ID Management)</b> is a library used to map small integer<br>
+      identifiers (IDs)to pointer-based data structures. It solves the problem of <br>
+      efficiently allocating, managing, and looking up unique IDs—such as file <br>
+      descriptors, process IDs (PIDs),or device instance  numbers—without the high <br>
+      memory overhead of a large array or the slow lookup times of a linked list.
     </td>
   </tr>
   
   <tr>
     <td>initramfs</td>
     <td>Initial RAM filesystem</td>
-    <td>initramfs (Initial RAM Filesystem) is a tiny, temporary root filesystem that loads into your<br>
-      RAM right after GRUB but before your actual Ubuntu system starts.<br>
+    <td>initramfs (Initial RAM Filesystem) is a tiny, temporary root filesystem that<br>
+      loads into your RAM right after GRUB but before your actual Ubuntu system starts.<br>
       Think of it as the "bridge" that helps the kernel find and mount your real hard drive.<br>
       <b>Why you need it (especially with your setup)</b><br>
       <ul>
         <li><b>NVMe: </b>The kernel needs a driver to talk to your NVMe SSD.</li>
         <li><b>LVM: </b>Your root partition (/) is hidden inside a Logical Volume.</li>
-        <li><b>Kernel's Problem: </b>The kernel alone doesn't know how to "unlock" an LVM volume or<br>
-          talk to every possible SSD brand.
-        <li><b>The Solution: </b>GRUB loads the initramfs file (found in /boot/initrd.img-...).<br>
-          This file contains the basic drivers (modules) and scripts needed to activate your LVM<br>
-          and mount the real / filesystem.</li>
+        <li><b>Kernel's Problem: </b>The kernel alone doesn't know how to "unlock" an<br>
+          LVM volume or talk to every possible SSD brand.
+        <li><b>The Solution: </b>GRUB loads the initramfs file (found in <br>
+          /boot/initrd.img-...). This file contains the basic drivers (modules) and scripts<br>
+          needed to activate your LVM and mount the real / filesystem.</li>
       </ul>
     </td>
   </tr>
@@ -563,33 +565,38 @@
   <tr>
     <td>inode</td>
     <td>Index node</td>
-    <td>Contains file metadata such as access permissions, size, owner, creation time etc. The inode<br>
-      object represents all the information needed by the kernel to manipulate a file or directory.<br>
+    <td>Contains file metadata such as access permissions, size, owner, creation time etc.<br>
+      The inode object represents all the information needed by the kernel to manipulate<br>
+      a file or directory.<br>
       <b>An inode is created</b> in two distinct scenarios:<br>
       <b>physically on the disk</b> and <b>logically in the kernel's memory.</b>
       <ol>
         <li><b><mark>Physical Creation (On-Disk):</mark></b><br></li><br>
-          A new inode is allocated on the storage medium whenever a new file system object is created.<br>
+          A new inode is allocated on the storage medium whenever a new file system<br>
+          object is created.<br>
           This happens during: 
           <ul>
-            <li><b>File/Directory Creation: </b>When you run mkdir, touch, or use the open() system<br>
-              call with the O_CREAT flag.</li>
-            <li><b>System Calls: </b>The VFS calls the specific filesystem method (like ext3_mkdir<br>
-              or ext4_create).</li>
-            <li><b>Mechanism: </b>The kernel looks at the Superblock to find a free bit in the Inode<br>
-              Bitmap, marks it as used, and initializes the inode structure in the disk's inode table.
+            <li><b>File/Directory Creation: </b>When you run mkdir, touch, or use<br>
+              the open() system call with the O_CREAT flag.
+            </li>
+            <li><b>System Calls: </b>The VFS calls the specific filesystem method<br>
+              (like ext3_mkdir or ext4_create).
+            </li>
+            <li><b>Mechanism: </b>The kernel looks at the Superblock to find a free bit<br>
+              in the Inode Bitmap, marks it as used, and initializes the inode structure<br>
+              in the disk's inode table.
             </li>
           </ul>
         <li><b><mark>In-Memory Creation (VFS Objects): </mark></b></li><br>
-          Even if a file already exists on disk, a "virtual" inode object must be created in RAM so<br>
-          the OS can work with it. This happens during:
+          Even if a file already exists on disk, a "virtual" inode object must be created<br>
+          in RAM so the OS can work with it. This happens during:<br>
           <ul>
-            <li><b>Path Lookup: </b>When you access a file (e.g., cat /etc/passwd), the kernel finds<br>
-              the inode number on disk and calls alloc_inode to create a matching struct inode in<br>
-              the kernel's memory.
+            <li><b>Path Lookup: </b>When you access a file (e.g., cat /etc/passwd),<br>
+              the kernel finds the inode number on disk and calls alloc_inode to create<br>
+              a matching struct inode in the kernel's memory.
             </li>
-            <li><b>Mounting: </b>The root inode of a partition is created in memory as soon as the<br>
-              device is mounted.
+            <li><b>Mounting: </b>The root inode of a partition is created in memory as soon<br>
+              as the device is mounted.
             </li>
           </ul>
       </ol>
@@ -860,10 +867,10 @@
   <tr>
     <td>NMI</td>
     <td>Non-maskable Interrupt</td>
-    <td><b>NMI (Non-Maskable Interrupt)</b> is a high-priority hardware interrupt that cannot be<br>
-      ignored or disabled by standard software masking techniques. It is reserved for critical <br>
-      events that must be handled immediately, even if the CPU is in a state where regular interrupts<br>
-      are disabled. NMI interrupt lines cannot be shared.
+    <td><b>NMI (Non-Maskable Interrupt)</b> is a high-priority hardware interrupt that<br>
+      cannot be ignored or disabled by standard software masking techniques. It is <br>
+      reserved for critical events that must be handled immediately, even if the CPU is<br>
+      in a state where regular interrupts are disabled. NMI interrupt lines cannot be shared.
     </td>
   </tr>
   
@@ -976,7 +983,8 @@
     <td>Page Table Entry</td>
     <td>It is the lowest (leaf) level of the Linux page table hierarchy and directly maps a<br>
       virtual page to a physical page.<br>
-      <mark><b>Virtual Address -->  PGD (L0) → PUD (L1) → PMD (L2) → PTE (L3) → Physical Page (4 KB).</b></mark>
+      <mark><b>Virtual Address -->  PGD (L0) → PUD (L1) → PMD (L2) → PTE (L3) → <br>
+        Physical Page (4 KB).</b></mark>
     </td>
   </tr>
 
@@ -989,7 +997,9 @@
   <tr>
     <td>PUD</td>
     <td>Page Upper Directory</td>
-    <td>It is the second level in the Linux page table hierarchy and sits between PGD and PMD.</td>
+    <td>It is the second level in the Linux page table hierarchy and sits between PGD<br>
+      and PMD.
+    </td>
   </tr>
 
   <tr>
