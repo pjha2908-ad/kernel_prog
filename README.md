@@ -88,6 +88,23 @@
   </tr>
 
   <tr>
+   <td>ABI</td>
+   <td>Application Binary Interface</td>
+   <td>ABI refers to the low-level interface between the kernel and other software (either user-space applications or kernel modules).<br>
+     Unlike the <b>API (Application Programming Interface)</b>, which is defined at the source code level, the <b>ABI is defined at the <br>
+     binary level (registers, memory layouts, and stack conventions). Unlike the user-space interface, the <b>internal kernel ABI is unstable</b>.
+    <ul>
+      <li><b>No Stability Guarantee: </b>There is no stable ABI for kernel modules. If you compile a driver for kernel v6.12,<br>
+        it will likely fail to load on v6.13 because internal data structures (like struct task_struct) frequently change their internal offsets.
+      </li>
+      <li><b>Version Binding: </b>This is why kernel modules must be recompiled for every specific kernel version. <br>
+        The vermagic string in a .ko file ensures the module's ABI matches the running kernel exactly.
+      </li>
+    </ul>
+   </td>
+  </tr>
+
+  <tr>
    <td>ASAN</td>
    <td>Address SANitizer</td>
    <td></td>
@@ -106,12 +123,27 @@
       It’s widely used for performance analysis, debugging, networking, and security.
    </td>
   </tr>
+
+  <tr>
+   <td>BDI</td>
+   <td>Backing Device Info</td>
+   <td>It is a core data structure (struct backing_dev_info) that represents the properties and state of a storage device<br>
+     (the "backing store") that sits underneath a filesystem.
+   </td>
+  </tr>
   
   <tr>
    <td>BIOS</td>
    <td>Basic Input Output System</td>
    <td></td>
   </tr>
+
+  <tr>
+   <td>BKL</td>
+   <td>Big Kernel Lock</td>
+   <td>When held, it kept the kernel in a non-preemptible state for long period of time. Now has been removed.</td>
+  </tr>
+  
   <tr>
    <td>BoF</td>
    <td>Buffer Overflow</td>
@@ -137,6 +169,12 @@
   </tr>
 
   <tr>
+   <td>cgroup</td>
+   <td>Control groups</td>
+   <td></td>
+  </tr>
+
+  <tr>
     <td>CISC</td>
     <td>Complex Instruction Set Computing</td>
     <td></td>
@@ -146,6 +184,29 @@
     <td>CMA</td>
     <td>Contiguous Memory Allocator</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>cmpxchg</td>
+    <td>Compare and Exchange</td>
+    <td><b>cmpxchg (Compare and Exchange)</b> is an atomic instruction provided by the CPU hardware.
+      <ol>
+        <li>
+          <b>Compare: </b>It compares the value at a specific memory address with a "target value" (what you expect the value to be).
+        </li>
+        <li><b>Match: </b>If the values are equal, it writes a "new value" into that memory address.
+        <li><b>Fail: </b>If the values are not equal (meaning another core changed it first), the write is aborted,<br>
+          and the current value at that address is returned so the caller can try again. 
+        </li>
+      </ol><br>
+      bool cmpxchg(int *address, int expected, int new_value) {
+        if (*address == expected) {
+          *address = new_value;
+          return true; // Success!
+        }
+        return false; // Someone else changed it
+      }
+    </td>
   </tr>
 
   <tr>
@@ -171,6 +232,12 @@
       <b><mark>CONFIG_MODULE_SIG_FORCE </mark></b>Kernel refuses to load unsigned modules
    </td>
   </tr>
+
+  <tr>
+   <td>cpuhp</td>
+   <td>CCPU Hotplug</td>
+   <td>It manage the state transitions (online/offline) for each specific CPU core.</td>
+  </tr>
   
   <tr>
    <td>CR3</td>
@@ -182,14 +249,34 @@
 
   <tr>
    <td>CTF</td>
+   <td>Common Vulnerabilities and Exposures</td>
+   <td>A <b>CVE</b> is a standardized identifier for a publicly disclosed security flaw.</td>
+  </tr>
+
+  <tr>
+   <td>CVE</td>
    <td>Common Trace Format</td>
    <td></td>
+  </tr>
+
+  <tr>
+   <td>CWE</td>
+   <td>Common Weakness and Enumeration</td>
+   <td>While <b>CVE (Common Vulnerabilities and Exposures)</b> identifies a specific security flaw in a program (like a specific bug in kernel 6.17),<br>
+     <b>CWE (Common Weakness Enumeration)</b> identifies the type or root cause of that weakness.
+   </td>
   </tr>
 
   <tr>
    <td>DAMON</td>
    <td>Data Access MONitor</td>
    <td>Capture and analyse memory access patterns of user-space process.</td>
+  </tr>
+
+  <tr>
+   <td>dd</td>
+   <td>Disc duplicator</td>
+   <td></td>
   </tr>
 
   <tr>
@@ -205,9 +292,28 @@
   </tr>
 
   <tr>
+   <td>dentry</td>
+   <td>Directory entry</td>
+   <td>It is a core Virtual File System (VFS) structure that represents a specific component in a file path. 
+     <ul>
+       <li>d_name: The actual name of the file or directory.</li>
+       <li>d_inode: A pointer to the inode associated with this name.</li>
+       <li>d_parent: A pointer to the dentry of the parent directory.</li>
+       <li>d_op: A pointer to dentry_operations (methods like d_revalidate or d_delete).</li>
+     </ul>
+   </td>
+  </tr>
+
+  <tr>
    <td>DKMS</td>
    <td>Dynamic Kernel Module Support</td>
    <td>Framework for module auto-loading.</td>
+  </tr>
+
+  <tr>
+   <td>dm-verity</td>
+   <td>Device-Mapped-Verity</td>
+   <td>A kernel feature that ensures the integrity of read-only partitions like /system and /vendor.</td>
   </tr>
 
   <tr>
@@ -249,6 +355,14 @@
   </tr>
 
   <tr>
+    <td>Epoll</td>
+    <td>Event Poll</td>
+    <td><b>epoll (Event Poll)</b> is a scalable Linux-specific I/O event notification mechanism used to monitor multiple file descriptors (FDs)<br>
+      to see if I/O is possible on any of them. 
+    </td>
+  </tr>
+
+  <tr>
     <td>EUID</td>
     <td>Effective User ID</td>
     <td>Who the kernel trusts for access control.</td>
@@ -257,13 +371,41 @@
   <tr>
     <td>EXPORT_SYMBOL</td>
     <td></td>
-    <td>By default all symbols (static/global) are private to the kernel modules. Using EXPORT_SYMBOL we can make it global, visible to any and all other kernel modules.</td>
+    <td>By default all symbols (static/global) are private to the kernel modules. Using EXPORT_SYMBOL we can make it global, <br>
+      visible to any and all other kernel modules.
+    </td>
+  </tr>
+
+  <tr>
+    <td>ext2</td>
+    <td>Second Extended File System</td>
+    <td>It does not keep a log of intended changes.<br>
+      <ul>
+        <li>Faster but riskier.</li>
+        <li>Doesn't write journal constantly, so takes less storage.</li>
+        <li>Stable and low overhead.</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>ext3</td>
+    <td>Third Extended File System</td>
+    <td>It records changes in a dedicated area (the "journal") before they are permanently applied to the main file system. </td>
   </tr>
 
   <tr>
     <td>f2fs</td>
     <td>Fast flash file system</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>FIQ</td>
+    <td>Fast Interrupt Request</td>
+    <td><b>FIQ (Fast Interrupt Request)</b> is a legacy hardware-level interrupt specific to the <b>ARM (32-bit)</b> architecture.<br>
+      It was designed to provide a higher-priority, lower-latency alternative to the standard IRQ.
+    </td>
   </tr>
 
   <tr>
@@ -283,6 +425,12 @@
     <td>Get Free Page</td>
     <td></td>
   </tr>  
+
+  <tr>
+    <td>GIC</td>
+    <td>Generic Interrupt Controller</td>
+    <td>On ARM</td>
+  </tr>
   
   <tr>
     <td>GKI</td>
@@ -294,6 +442,12 @@
     <td>GPL</td>
     <td>General Public License</td>
     <td>If code is upstream into the mainline kernel, it must be under the GNU GPL-2.0 license.</td>
+  </tr>
+
+  <tr>
+    <td>GPOS</td>
+    <td>General Purpose Operating System</td>
+    <td></td>
   </tr>
   
   <tr>
@@ -331,13 +485,30 @@
     <td>Human Interface Device</td>
     <td></td>
   </tr>
+
+  <tr>
+    <td>HRT</td>
+    <td>High-resolution timers</td>
+    <td>It is the interrupt source for the kernel's high-precision timing subsystem, which allows for microsecond-level<br>
+      (or even nanosecond-level) accuracy, far exceeding the old "jiffies" system.
+    </td>
+  </tr>
   
   <tr>
     <td>I2C</td>
     <td>Inter-Integrated Circuit</td>
     <td></td>
   </tr>
-
+  
+  <tr>
+    <td>IDR</td>
+    <td>Integer ID Management</td>
+    <td>The <b>IDR (Integer ID Management)</b> is a library used to map small integer identifiers (IDs) to pointer-based data structures.<br>
+      It solves the problem of efficiently allocating, managing, and looking up unique IDs—such as file descriptors, process IDs (PIDs),<br>
+      or device instance numbers—without the high memory overhead of a large array or the slow lookup times of a linked list.
+    </td>
+  </tr>
+  
   <tr>
     <td>initramfs</td>
     <td>Initial RAM filesystem</td>
@@ -356,9 +527,71 @@
   </tr>
 
   <tr>
+    <td>inode</td>
+    <td>Index node</td>
+    <td>Contains file metadata such as access permissions, size, owner, creation time etc. The inode object represents all the information<br>
+      needed by the kernel to manipulate a file or directory.<br><b>An inode is created</b> in two distinct scenarios:<br>
+      <b>physically on the disk</b> and <b>logically in the kernel's memory.</b>
+      <ol>
+        <li><b><mark>Physical Creation (On-Disk):</mark></b><br></li><br>
+          A new inode is allocated on the storage medium whenever a new file system object is created. This happens during: 
+          <ul>
+            <li><b>File/Directory Creation: </b>When you run mkdir, touch, or use the open() system call with the O_CREAT flag.</li>
+            <li><b>System Calls: </b>The VFS calls the specific filesystem method (like ext3_mkdir or ext4_create).</li>
+            <li><b>Mechanism: </b>The kernel looks at the Superblock to find a free bit in the Inode Bitmap, marks it as used,<br>
+              and initializes the inode structure in the disk's inode table.
+            </li>
+          </ul>
+        <li><b><mark>In-Memory Creation (VFS Objects): </mark></b></li><br>
+          Even if a file already exists on disk, a "virtual" inode object must be created in RAM so the OS can work with it. This happens during:
+          <ul>
+            <li><b>Path Lookup: </b>When you access a file (e.g., cat /etc/passwd), the kernel finds the inode number on disk <br>
+              and calls alloc_inode to create a matching struct inode in the kernel's memory.
+            </li>
+            <li><b>Mounting: </b>The root inode of a partition is created in memory as soon as the device is mounted.</li>
+          </ul>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
+    <td>[IO][A]PIC</td>
+    <td>IO-[Advanced] Programmable Interrupt Controller</td>
+    <td>IO-APIC on x86</td>
+  </tr>
+
+  <tr>
+    <td>IOCTL</td>
+    <td>Input-Output Control</td>
+    <td>The ioctl system call is used to issue commands to the device (via its driver).</td>
+  </tr>
+
+  <tr>
     <td>IoF</td>
     <td>Integer Overflow</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>IRQ</td>
+    <td>Interrupt ReQuest</td>
+    <td><b>IRQ (Interrupt Request)</b> is a signal sent by hardware to the CPU to indicate that an event requires immediate attention.<br>
+      It allows the processor to stop its current task, handle the hardware event, and then resume.
+    </td>
+  </tr>
+
+  <tr>
+    <td>ISR</td>
+    <td>Interrupt Service Routine</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>IWI</td>
+    <td>Inter-Work Interrupt</td>
+    <td>It is primarily used on <b>ARM64</b> and some <b>RISC-V</b> systems to signal a CPU core that a new task has
+      been added to its local <b>Workqueue.</b>
+    </td>
   </tr>
 
   <tr>
@@ -367,6 +600,12 @@
     <td>It is a dynamic memory error detector used primarily to find out-of-bounds(buffer overflow/underflow),<br>
       use-after-free bug and double-free access.
     </td>
+  </tr>
+
+  <tr>
+    <td>KASLR</td>
+    <td>Kernel ASLR</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -394,8 +633,14 @@
   </tr>
 
   <tr>
-    <td>KASLR</td>
-    <td>Kernel ASLR</td>
+    <td>kprobe</td>
+    <td>Kernel probe</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>kretprobe</td>
+    <td>Kernel probe return</td>
     <td></td>
   </tr>
 
@@ -403,6 +648,18 @@
     <td>KSE</td>
     <td>Kernel Schedulable Entity</td>
     <td>In linux, the KSE is a thread, not a process.</td>
+  </tr>
+
+  <tr>
+    <td>LANANA</td>
+    <td>Linux Assigned Names And Numbers Authority</td>
+    <td>Only these folks can officially assign the device node - the type and the major:minor numbers - to devices.</td>
+  </tr>
+
+  <tr>
+    <td>LDM</td>
+    <td>Linux Device Model</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -415,6 +672,12 @@
     <td>LLC</td>
     <td>Last Level Cache</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>loff_t</td>
+    <td>Long Offset Type</td>
+    <td>loff_t is a signed 64-bit integer used to represent file positions and offsets.</td>
   </tr>
 
   <tr>
@@ -436,6 +699,57 @@
   </tr>
 
   <tr>
+    <td>MBR</td>
+    <td>Master Boot Record</td>
+    <td>
+      The Master Boot Record (MBR) is the first sector of a storage device (Sector 0), occupying exactly 512 bytes.<br>
+      It is the legacy standard for partitioning disks, used primarily by BIOS-based systems to locate and load an operating system.<br>
+      <b><mark>sudo xxd -l 512 /dev/nvme0n1</mark></b><br>
+      The output shows a <b>Protective MBR (Master Boot Record).</b><br><br>
+      00000000: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000010: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000020: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000040: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000050: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000060: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000070: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000080: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000090: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000a0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000b0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000c0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000d0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000e0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000000f0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000100: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000110: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000120: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000130: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000140: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000150: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000160: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000170: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000180: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      00000190: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000001a0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000001b0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000001c0: <b><mark>02</mark></b>00 <b><mark>ee</mark>ff</b> ffff 0100 0000 <b>ffff ff<mark>18</mark></b> 0000  ................
+      000001d0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000001e0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+      000001f0: 0000 0000 0000 0000 0000 0000 0000 <b>55<mark>aa</mark></b>  ..............U.<br>
+
+      <ul>
+        <li><b>000001c0 (Partition Entry): </b>The data starting with 0200 ee... is a single dummy partition entry of type 0xEE.<br>
+          This tells old BIOS systems, "This disk is full, don't touch it."
+        </li><b>000001fe (Boot Signature): </b>The 55aa at the very end is the standard "magic number" that marks this as a valid bootable sector.<br>
+          <b>MBR Structure Breakdown:</b><br>
+            The 512 bytes are strictly divided into three main components: <br>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
     <td>min_flt</td>
     <td>nnumber of minor page faults</td>
     <td>A <b>minor page fault </b> occurs when:
@@ -452,6 +766,33 @@
     <td>Hardware for memory translation</td>
   </tr>
 
+  <tr>
+    <td>Mutex</td>
+    <td>Mutual Exclusion</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>NAPI</td>
+    <td>New API</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>NBD</td>
+    <td>Network Block Device</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>NMI</td>
+    <td>Non-maskable Interrupt</td>
+    <td><b>NMI (Non-Maskable Interrupt)</b> is a high-priority hardware interrupt that cannot be ignored or disabled by<br>
+      standard software masking techniques. It is reserved for critical events that must be handled immediately, even if<br>
+      the CPU is in a state where regular interrupts are disabled. NMI interrupt lines cannot be shared.
+    </td>
+  </tr>
+  
   <tr>
     <td>NUMA</td>
     <td>Non-Uniform Memory Access</td>
@@ -511,6 +852,14 @@
     <td>Page Middle Directory</td>
     <td>It is the third level in the Linux page table hierarchy (for most modern configs) and sits between PUD and PTE.</td>
   </tr>
+
+  <tr>
+    <td>PMI</td>
+    <td>Performance Monitoring Interrupt</td>
+    <td>It is a specialized interrupt generated by the CPU's Performance Monitoring Unit (PMU) to signal that<br> 
+      a specific hardware counter has overflowed.
+    </td>
+  </tr>
   
   <tr>
     <td>POST</td>
@@ -531,11 +880,32 @@
   </tr>
 
   <tr>
+    <td>pts</td>
+    <td><b>Pseudo-Terminal Slave</b> number 1</td>
+    <td>Unlike /dev/tty1 (which represents a physical keyboard and monitor attached to the machine), a <b>pts</b> is a "fake"<br> 
+      terminal created by software.<br>
+      <b>Why are you on a PTS?</b><br>
+        You get a pts address whenever you connect to the system via:
+      <ul>
+        <li>SSH (Remote login)</li>
+        <li>Terminal Emulators (Gnome Terminal, xterm, Terminator)</li>
+        <li>Multiplexers (Tmux or Screen)</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
     <td>PTE</td>
     <td>Page Table Entry</td>
     <td>It is the lowest (leaf) level of the Linux page table hierarchy and directly maps a virtual page to a physical page.<br>
       <mark><b>Virtual Address -->  PGD (L0) → PUD (L1) → PMD (L2) → PTE (L3) → Physical Page (4 KB).</b></mark>
     </td>
+  </tr>
+
+  <tr>
+    <td>pty</td>
+    <td>Pseudo-terminal</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -545,8 +915,31 @@
   </tr>
 
   <tr>
+    <td>RCU</td>
+    <td>Ready-Copy update</td>
+    <td><b>RCU (Read-Copy-Update)</b> is a high-performance synchronization mechanism that allows multiple "readers" to<br>
+      access data simultaneously with a "writer.
+      <ul>
+        <li><b>Read: </b>Readers access data directly. There is zero overhead (no spinning, no sleeping).</li>
+        <li><b>Copy: </b>When a writer wants to change the data, it doesn't modify the original. It makes a copy, modifies the copy,<br>
+          and then swaps the pointer to the new version.
+        </li>
+        <li><b>Update: </b>The old data isn't deleted immediately. The kernel waits for a Grace Period (until all existing readers<br>
+          are finished) before safely freeing the old memory.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
     <td>RISC</td>
     <td>Reduced Instruction Set Computer</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>RMW</td>
+    <td>Read-Modify-Write</td>
     <td></td>
   </tr>
 
@@ -564,9 +957,45 @@
   </tr>
 
   <tr>
+    <td>RTC</td>
+    <td>Real Time Clock</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>RTL</td>
+    <td>Real Time Linux</td>
+    <td></td>
+  </tr>
+
+  <tr>
     <td>RUID</td>
     <td>Real User ID</td>
     <td>Who started the process.!</td>
+  </tr>
+
+  <tr>
+    <td>SCL</td>
+    <td>Serial Clock</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>SCSI</td>
+    <td>Small Computer System Interface</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>SDA</td>
+    <td>Serial Data</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>sed</td>
+    <td>Simple encrypt decrypt</td>
+    <td></td>
   </tr>
   
   <tr>
@@ -576,8 +1005,33 @@
   </tr>
 
   <tr>
+    <td>SEV</td>
+    <td>Send Event</td>
+    <td><b>SEV (Send Event)</b> is the companion instruction to WFE. It acts as a signaling mechanism to wake up processor<br>
+      cores that have entered a low-power standby state.<br>
+      When a core executes SEV, it causes an event to be signaled to all cores in the multiprocessor system (or within a specific sharing domain).
+      <ol>
+        <li><b>The Signal: </b>It sets a local "event latch" (a hidden internal bit) on every core in the cluster.</li>
+        <li><b>The Wakeup: </b>Any core currently "sleeping" in a WFE (Wait For Event) state will see this latch set, wake up,<br>
+          and resume instruction execution.
+        </li>
+        <li><b>The Latch: </b>If a core is not sleeping when SEV is called, the event latch remains set. When that core eventually<br>
+          reaches a WFE instruction, it will see the latch is already set and simply continue running without ever going to sleep<br>
+          (this prevents "missing" a signal).
+        </li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr>
     <td>SIMD</td>
     <td>Single Instruction, Multiple Data</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>SLOCs</td>
+    <td>Source Lines of Code</td>
     <td></td>
   </tr>
   
@@ -585,6 +1039,12 @@
     <td>SMP</td>
     <td>Symmetric MultiProcessing</td>
     <td>Multiple CPUs sharing memory</td>
+  </tr>
+
+  <tr>
+    <td>SOH</td>
+    <td>Start of Header</td>
+    <td></td>
   </tr>
 
   <tr>
@@ -638,6 +1098,41 @@
     <td>Translation Table Base Register 1</td>
     <td>For kernel paging table.</td>
   </tr>
+
+  <tr>
+    <td>ttv</td>
+    <td>Teletype terminal</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>UAF</td>
+    <td>Use After Free</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>UB</td>
+    <td>Undefined Behavior</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>UBSAN</td>
+    <td>Undefined BehaviorSanatizer</td>
+    <td><b>UBSAN (Undefined Behavior Sanitizer)</b> is a runtime debugging tool for the Linux kernel that detects<br>
+      <b>Undefined Behavior—actions</b> in C that the language standard doesn't define, often leading to unpredictable crashes or security flaws.<br> 
+      <b>What it catches:</b><br>
+        It identifies common "silent" bugs that compilers usually ignore:<br>
+      <ul>
+        <li><b>Integer Overflows: </b>Signed integer addition/subtraction exceeding its bit limit.</li>
+        <li><b>Array Out-of-Bounds: </b>Accessing an index outside the declared size of an array.</li>
+        <li><b>Invalid Shifts: </b>Shifting an integer by more bits than its width (e.g., shifting a 32-bit int by 33).</li>
+        <li><b>Misaligned Pointers: </b>Accessing memory through a pointer that isn't aligned with the data type.
+        <li><b>Null Pointer Dereferences: </b>Using a pointer that points to NULL.</li>
+      </ul>
+    </td>
+  </tr>
  
   <tr>
     <td>UEFI</td>
@@ -656,9 +1151,21 @@
   </tr>
 
   <tr>
+    <td>umh</td>
+    <td>User Mode Helper</td>
+    <td></td>
+  </tr>
+
+  <tr>
     <td>UMR</td>
     <td>Uninitialized Memory Reads</td>
     <td></td>
+  </tr>
+
+  <tr>
+    <td>UTS</td>
+    <td>Unix Timesharing System</td>
+    <td>It provides domain name and hostname isolation.</td>
   </tr>
 
   <tr>
@@ -669,6 +1176,32 @@
         <li>Provides fast system calls (e.g. gettimeofday, clock_gettime)</li>
         <li>Avoids expensive svc (syscall) transitions</li>
         <li>Architecture-specific </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>VFS</td>
+    <td>Virtual File System</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>wfe</td>
+    <td>Wait For Event</td>
+    <td><b>WFE (Wait For Event)</b> is a hint instruction used to put a processor into a low-power standby state until a specific "event" occurs.</td>
+  </tr>
+
+  <tr>
+    <td>w/w</td>
+    <td>Wait/wound</td>
+    <td>It is a specialized mutex implementation used to handle <b>deadlock avoidance</b> when a thread needs to acquire multiple locks at once.<br> 
+      W/W mutexes use a Ticket (Timestamp) system. Every "transaction" (a set of lock attempts) gets a serial number.
+      <ul>
+        <li><b>Wait: </b>If a "younger" thread (higher ticket number) hits a lock held by an "older" thread, it must wait.</li>
+        <li><b>Wound: </b>If an "older" thread (lower ticket number) hits a lock held by a "younger" thread, it wounds the younger one.<br>
+          The younger thread must drop all its locks and start over (back off).
+        </li>
       </ul>
     </td>
   </tr>
