@@ -972,8 +972,8 @@
   <tr>
     <td>pts</td>
     <td><b>Pseudo-Terminal Slave</b> number 1</td>
-    <td>Unlike /dev/tty1 (which represents a physical keyboard and monitor attached to the machine),<br>
-      a <b>pts</b> is a "fake" terminal created by software.<br>
+    <td>Unlike /dev/tty1 (which represents a physical keyboard and monitor attached to the<br>
+      machine), a <b>pts</b> is a "fake" terminal created by software.<br>
       <b>Why are you on a PTS?</b><br>
         You get a pts address whenever you connect to the system via:
       <ul>
@@ -1011,17 +1011,19 @@
   <tr>
     <td>RCU</td>
     <td>Ready-Copy update</td>
-    <td><b>RCU (Read-Copy-Update)</b> is a high-performance synchronization mechanism that allows<br>
-      multiple "readers" to access data simultaneously with a "writer.
+    <td><b>RCU (Read-Copy-Update)</b> is a high-performance synchronization mechanism that<br>
+      allows multiple "readers" to access data simultaneously with a "writer.
       <ul>
         <li><b>Read: </b>Readers access data directly. There is zero overhead (no spinning,<br>
           no sleeping).
         </li>
-        <li><b>Copy: </b>When a writer wants to change the data, it doesn't modify the original.<br>
-          It makes a copy, modifies the copy, and then swaps the pointer to the new version.
+        <li><b>Copy: </b>When a writer wants to change the data, it doesn't modify the<br>
+          original. It makes a copy, modifies the copy, and then swaps the pointer to the<br>
+          new version.
         </li>
-        <li><b>Update: </b>The old data isn't deleted immediately. The kernel waits for a Grace<br>
-          Period (until all existing readers are finished) before safely freeing the old memory.
+        <li><b>Update: </b>The old data isn't deleted immediately. The kernel waits for<br>
+          a Grace Period (until all existing readers are finished) before safely freeing<br>
+          the old memory.
         </li>
       </ul>
     </td>
@@ -1042,8 +1044,8 @@
   <tr>
     <td>RSS</td>
     <td>Resident Set Size</td>
-    <td>The amount of physical RAM currently occupied by a process. RSS counts only pages that are<br>
-      resident in RAM, such as:
+    <td>The amount of physical RAM currently occupied by a process. RSS counts only pages<br>
+      that are resident in RAM, such as:
       <ul>
         <li>Code (text) pages</li>
         <li>Heap</li>
@@ -1104,20 +1106,21 @@
   <tr>
     <td>SEV</td>
     <td>Send Event</td>
-    <td><b>SEV (Send Event)</b> is the companion instruction to WFE. It acts as a signaling mechanism<br>
-      to wake up processor cores that have entered a low-power standby state. When a core executes SEV,<br>
-      it causes an event to be signaled to all cores in the multiprocessor system (or within a specific<br>
-      sharing domain).
+    <td><b>SEV (Send Event)</b> is the companion instruction to WFE. It acts as a signaling<br>
+      mechanism to wake up processor cores that have entered a low-power standby state. When<br>
+      a core executes SEV, it causes an event to be signaled to all cores in the <br>
+      multiprocessor system (or within a specific sharing domain).
       <ol>
-        <li><b>The Signal: </b>It sets a local "event latch" (a hidden internal bit) on every core in<br>
-          the cluster.
+        <li><b>The Signal: </b>It sets a local "event latch" (a hidden internal bit) on every<br>
+          core in the cluster.
         </li>
-        <li><b>The Wakeup: </b>Any core currently "sleeping" in a WFE (Wait For Event) state will see this<br>
-          latch set, wake up, and resume instruction execution.
+        <li><b>The Wakeup: </b>Any core currently "sleeping" in a WFE (Wait For Event) state<br>
+          will see this latch set, wake up, and resume instruction execution.
         </li>
-        <li><b>The Latch: </b>If a core is not sleeping when SEV is called, the event latch remains set.<br>
-          When that core eventually reaches a WFE instruction, it will see the latch is already set and <br>
-          simply continue running without ever going to sleep (this prevents "missing" a signal).
+        <li><b>The Latch: </b>If a core is not sleeping when SEV is called, the event latch<br>
+          remains set. When that core eventually reaches a WFE instruction, it will see the<br>
+          latch is already set and  simply continue running without ever going to sleep (this<br>
+          prevents "missing" a signal).
         </li>
       </ol>
     </td>
@@ -1150,8 +1153,8 @@
   <tr>
     <td>SPDX</td>
     <td>Software Package Data Exchange</td>
-    <td>A shorthand and concise format for expressing the license the code is under. Must be 1st line<br>
-      in every source file.<br>
+    <td>A shorthand and concise format for expressing the license the code is under. Must<br>
+      be 1st line in every source file.<br>
       <b><mark>//SPDX-License-Identifier: GPL-2.0</mark></b>
     </td>
   </tr>
@@ -1177,7 +1180,9 @@
   <tr>
     <td>TLB</td>
     <td>Translation Lookaside Buffer</td>
-    <td>It’s a <b>CPU hardware cache</b> that speeds up <b>virtual → physical address translation.</b></td>
+    <td>It’s a <b>CPU hardware cache</b> that speeds up <b>virtual → physical<br>
+      address translation.
+    </b></td>
   </tr>
 
   <tr>
@@ -1189,9 +1194,9 @@
   <tr>
     <td>TTBR0</td>
     <td>Translation Table Base Register 0</td>
-    <td>It is is an <b>ARM64 CPU register</b> that tells the MMU <b>where the page tables for user<br>
-      space start. TTBR0_EL1 </b>holds the physical base address of the page tables used for<br>
-      translating user-space virtual addresses.
+    <td>It is is an <b>ARM64 CPU register</b> that tells the MMU <b>where the page tables<br>
+      for user space start. TTBR0_EL1 </b>holds the physical base address of the page<br>
+      tables used for translating user-space virtual addresses.
     </td>
   </tr>
 
@@ -1222,23 +1227,24 @@
   <tr>
     <td>UBSAN</td>
     <td>Undefined BehaviorSanatizer</td>
-    <td><b>UBSAN (Undefined Behavior Sanitizer)</b> is a runtime debugging tool for the Linux<br>
-      kernel that detects <b>Undefined Behavior—actions</b> in C that the language standard<br>
-      doesn't define, often leading to unpredictable crashes or security flaws.<br> 
+    <td><b>UBSAN (Undefined Behavior Sanitizer)</b> is a runtime debugging tool for<br>
+      the Linux kernel that detects <b>Undefined Behavior—actions</b> in C that the<br>
+      language standard doesn't define, often leading to unpredictable crashes or<br>
+      security flaws.<br>
       <b>What it catches:</b><br>
         It identifies common "silent" bugs that compilers usually ignore:<br>
       <ul>
-        <li><b>Integer Overflows: </b>Signed integer addition/subtraction exceeding its bit<br>
-          limit.
+        <li><b>Integer Overflows: </b>Signed integer addition/subtraction exceeding<br>
+          its bit limit.
         </li>
-        <li><b>Array Out-of-Bounds: </b>Accessing an index outside the declared size of an<br>
-          array.
+        <li><b>Array Out-of-Bounds: </b>Accessing an index outside the declared<br>
+          size of an array.
         </li>
-        <li><b>Invalid Shifts: </b>Shifting an integer by more bits than its width (e.g., <br>
-          shifting a 32-bit int by 33).
+        <li><b>Invalid Shifts: </b>Shifting an integer by more bits than its width<br>
+          (e.g., shifting a 32-bit int by 33).
         </li>
-        <li><b>Misaligned Pointers: </b>Accessing memory through a pointer that isn't aligned<br>
-          with the data type.
+        <li><b>Misaligned Pointers: </b>Accessing memory through a pointer that<br>
+          isn't aligned with the data type.
         </li>
         <li><b>Null Pointer Dereferences: </b>Using a pointer that points to NULL.</li>
       </ul>
@@ -1250,18 +1256,20 @@
     <td>Unified Extensible Firmware Interface</td>
     <td>
       <ul>
-        <li>UEFI (Unified Extensible Firmware Interface) is the modern replacement for the<br>
-          legacy BIOS.
+        <li>UEFI (Unified Extensible Firmware Interface) is the modern replacement<br>
+          for the legacy BIOS.
         </li>
-        <li>Much more secure, it only allow "signed" operating systems (apps) to be booted via it.</li>
-        <li>It requires a special partition called ESP (EFI System Partition); it holds a .efi file<br>
-          that contains the initialization code and data, unlike the BIOS, where it's written in<br>
-          firmware (EEPROM chip).
+        <li>Much more secure, it only allow "signed" operating systems (apps) to be<br>
+          booted via it.
+        </li>
+        <li>It requires a special partition called ESP (EFI System Partition); <br>
+          it holds a .efi file that contains the initialization code and data, <br>
+          unlike the BIOS, where it's written in firmware (EEPROM chip).
         </li>
         <li>Faster than BIOS.</li>
         <li>It lets you run 32- or 64 bit code.</li>
-        <li>Drive size: the BIOS supports only up to 2.2 TB disks, whereas UEFI can support disks upto<br>
-          9 ZB(zettabytes) in size.
+        <li>Drive size: the BIOS supports only up to 2.2 TB disks, whereas UEFI can<br>
+          support disks upto 9 ZB(zettabytes) in size.
         </li>
       </ul>
     </td>
@@ -1306,24 +1314,24 @@
   <tr>
     <td>wfe</td>
     <td>Wait For Event</td>
-    <td><b>WFE (Wait For Event)</b> is a hint instruction used to put a processor into a low-power<br>
-      standby state until a specific "event" occurs.
+    <td><b>WFE (Wait For Event)</b> is a hint instruction used to put a processor<br>
+      into a low-power standby state until a specific "event" occurs.
     </td>
   </tr>
 
   <tr>
     <td>w/w</td>
     <td>Wait/wound</td>
-    <td>It is a specialized mutex implementation used to handle <b>deadlock avoidance</b> when a thread<br>
-      needs to acquire multiple locks at once. W/W mutexes use a Ticket (Timestamp) system. Every <br>
-      "transaction" (a set of lock attempts) gets a serial number.
+    <td>It is a specialized mutex implementation used to handle <b>deadlock avoidance</b><br>
+      when a thread needs to acquire multiple locks at once. W/W mutexes use a Ticket <br>
+      (Timestamp) system. Every "transaction" (a set of lock attempts) gets a serial number.
       <ul>
-        <li><b>Wait: </b>If a "younger" thread (higher ticket number) hits a lock held by an "older"<br>
-          thread, it must wait.
+        <li><b>Wait: </b>If a "younger" thread (higher ticket number) hits a lock held <br>
+          by an "older" thread, it must wait.
         </li>
-        <li><b>Wound: </b>If an "older" thread (lower ticket number) hits a lock held by a "younger"<br>
-          thread, it wounds the younger one. The younger thread must drop all its locks and start <br>
-          over (back off).
+        <li><b>Wound: </b>If an "older" thread (lower ticket number) hits a lock held by<br>
+          a "younger" thread, it wounds the younger one. The younger thread must drop all<br>
+          its locks and start over (back off).
         </li>
       </ul>
     </td>
