@@ -703,8 +703,8 @@
   <tr>
     <td>LANANA</td>
     <td>Linux Assigned Names And Numbers Authority</td>
-    <td>Only these folks can officially assign the device node - the type and the major:minor numbers<br>
-      - to devices.</td>
+    <td>Only these folks can officially assign the device node - the type and the major:minor<br>
+      numbers - to devices.</td>
   </tr>
 
   <tr>
@@ -753,9 +753,9 @@
     <td>MBR</td>
     <td>Master Boot Record</td>
     <td>
-      The Master Boot Record (MBR) is the first sector of a storage device (Sector 0), occupying<br>
-      exactly 512 bytes. It is the legacy standard for partitioning disks, used primarily by <br>
-      BIOS-based systems to locate and load an operating system.<br>
+      The Master Boot Record (MBR) is the first sector of a storage device (Sector 0),<br>
+      occupying exactly 512 bytes. It is the legacy standard for partitioning disks, used<br>
+      primarily by BIOS-based systems to locate and load an operating system.<br>
       <b><mark>sudo xxd -l 512 /dev/nvme0n1</mark></b><br>
       The output shows a <b>Protective MBR (Master Boot Record).</b><br><br>
       00000000: 0000 0000 0000 0000 0000 0000 0000 0000  ................<br>
