@@ -213,13 +213,13 @@
           returned so the caller<br> can try again. 
         </li>
       </ol><br>
-      bool cmpxchg(int *address, int expected, int new_value) {
-        if (*address == expected) {
-          *address = new_value;
-          return true; // Success!
-        }
-        return false; // Someone else changed it
-      }
+      bool cmpxchg(int *address, int expected, int new_value) {<br>
+        if (*address == expected) {<br>
+          *address = new_value;<br>
+          return true; // Success!<br>
+        }<br>
+        return false; // Someone else changed it<br>
+      }<br>
     </td>
   </tr>
 
@@ -281,7 +281,8 @@
    <td>Common Weakness and Enumeration</td>
    <td>While <b>CVE (Common Vulnerabilities and Exposures)</b> identifies a specific<br>
      security flaw<br> in a program (like a specific bug in kernel 6.17),<br>
-     <b>CWE (Common Weakness Enumeration)</b> identifies the type or root cause of that weakness.
+     <b>CWE (Common Weakness Enumeration)</b> identifies the type or root cause of that<br>
+     weakness.
    </td>
   </tr>
 
