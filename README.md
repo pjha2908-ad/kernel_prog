@@ -91,10 +91,10 @@
    <td>ABI</td>
    <td>Application Binary Interface</td>
    <td>ABI refers to the low-level interface between the kernel and other software (either<br>
-     user-space applications or kernel modules). Unlike the <b>API (Application Programming<br>
-     Interface)</b>,which is defined at the source code level, the <b>ABI is defined at the<br>
-     binary level (registers, memory layouts, and stack conventions). Unlike the user-space<br>
-     interface, the <b>internal kernel ABI is unstable</b>.<br>
+     user-space applications or kernel modules). Unlike the <b>API (Application Programming</b><br>
+     Interface)</b>, which is defined at the source code level, the <b>ABI</b> is defined at the binary<br>
+     level (registers, memory layouts, and stack conventions). Unlike the user-space interface,<br>
+     the <b>internal kernel ABI is unstable</b>.<br>
     <ul>
       <li><b>No Stability Guarantee: </b>There is no stable ABI for kernel modules. If you<br>
         compile a driver for kernel v6.12, it will likely fail to load on v6.13 because<br>
@@ -124,16 +124,17 @@
   <tr>
    <td>BCC</td>
    <td>BPF Compiler Collection</td>
-   <td>It is a <b>toolkit and framework for creating eBPF programs</b> used to trace, profile, and observe Linux systems <b>at runtime with very low overhead.</b><br>
-      It’s widely used for performance analysis, debugging, networking, and security.
+   <td>It is a <b>toolkit and framework for creating eBPF programs</b> used to trace, profile,<br>
+     and observe Linux systems <b>at runtime with very low overhead.</b> It’s widely used for<br>
+     performance analysis, debugging, networking, and security.
    </td>
   </tr>
 
   <tr>
    <td>BDI</td>
    <td>Backing Device Info</td>
-   <td>It is a core data structure (struct backing_dev_info) that represents the properties and state of a storage device<br>
-     (the "backing store") that sits underneath a filesystem.
+   <td>It is a core data structure (struct backing_dev_info) that represents the properties and<br>
+     state of a storage device (the "backing store") that sits underneath a filesystem.
    </td>
   </tr>
   
@@ -146,7 +147,9 @@
   <tr>
    <td>BKL</td>
    <td>Big Kernel Lock</td>
-   <td>When held, it kept the kernel in a non-preemptible state for long period of time. Now has been removed.</td>
+   <td>When held, it kept the kernel in a non-preemptible state for long period of time. Now has<br>
+     been removed.
+   </td>
   </tr>
   
   <tr>
@@ -197,11 +200,12 @@
     <td><b>cmpxchg (Compare and Exchange)</b> is an atomic instruction provided by the CPU hardware.
       <ol>
         <li>
-          <b>Compare: </b>It compares the value at a specific memory address with a "target value" (what you expect the value to be).
+          <b>Compare: </b>It compares the value at a specific memory address with a "target value"<br>
+          (what you expect the value to be).
         </li>
         <li><b>Match: </b>If the values are equal, it writes a "new value" into that memory address.
-        <li><b>Fail: </b>If the values are not equal (meaning another core changed it first), the write is aborted,<br>
-          and the current value at that address is returned so the caller can try again. 
+        <li><b>Fail: </b>If the values are not equal (meaning another core changed it first), <br>
+          the write is aborted, and the current value at that address is returned so the caller<br> can try again. 
         </li>
       </ol><br>
       bool cmpxchg(int *address, int expected, int new_value) {
@@ -231,8 +235,8 @@
   <tr>
    <td>CONFIG_MODULE_SIG</td>
    <td>Module Signature Verification</td>
-    <td><b><mark>CONFIG_MODULE_SIG </mark></b>is a kernel build-time option that controls module signature verification — i.e.,<br>
-      whether the kernel requires .ko modules to be cryptographically signed before loading.<br> 
+    <td><b><mark>CONFIG_MODULE_SIG </mark></b>is a kernel build-time option that controls module signature<br>
+      verification — i.e., whether the kernel requires .ko modules to be cryptographically signed before<br> loading. 
       <b><mark>CONFIG_MODULE_SIG_ALL </mark></b>Sign all modules automatically during kernel build. 
       <b><mark>CONFIG_MODULE_SIG_FORCE </mark></b>Kernel refuses to load unsigned modules
    </td>
@@ -247,7 +251,7 @@
   <tr>
    <td>CR3</td>
    <td>Control Register 3</td>
-   <td>CR3 is the control register that holds the physical address of the top-level page table (PGD/PML4) on x86/x86-64.<br>
+   <td>CR3 is the control register that holds the physical address of the top-level page table (PGD/PML4)<br> on x86/x86-64.
       <b>CR3</b> is the <b>x86/x86-64 equivalent of ARM64’s TTBR0/TTBR1.</b>
     </td>
   </tr>
@@ -267,7 +271,7 @@
   <tr>
    <td>CWE</td>
    <td>Common Weakness and Enumeration</td>
-   <td>While <b>CVE (Common Vulnerabilities and Exposures)</b> identifies a specific security flaw in a program (like a specific bug in kernel 6.17),<br>
+   <td>While <b>CVE (Common Vulnerabilities and Exposures)</b> identifies a specific security flaw<br> in a program (like a specific bug in kernel 6.17),<br>
      <b>CWE (Common Weakness Enumeration)</b> identifies the type or root cause of that weakness.
    </td>
   </tr>
