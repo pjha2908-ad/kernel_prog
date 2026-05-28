@@ -1,4 +1,4 @@
-# kernel_prog
+<img width="2128" height="38" alt="image" src="https://github.com/user-attachments/assets/5418de70-a3c3-431b-93ed-5ea18fba49cf" /># kernel_prog
 
 <h3>Links: </h3>
 <ul>
@@ -14,6 +14,101 @@
   </tr>
 
   <tr>
+    <td>df(disk free)</td>
+    <td>The df command shows disk space usage for all mounted filesystems.<br> 
+      <b>Options:</b><br>
+      <b>-h : </b>human readable (MB/GB)<br>
+      <b>--local: </b>locally mounted filesystem<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>echo c &gt; /proc/sysrq-trigger</td>
+    <td>
+      <ul>
+        <li><b>The Command: </b>It sends the "c" (crash) signal directly to the kernel's
+          <b>SysRq (System Request)</b> handler.
+        </li>
+        <li><b>The Result: </b>The kernel will instantly trigger a "NULL pointer dereference."</li>
+        <li><b>Why do this?</b>Developers use it to test if their Kdump (Kernel Dump)<br>
+          configuration is working. If set up correctly, the system won't just freeze;<br>
+          it will save a "memory snapshot" (vmcore) to your disk so you can analyze exactly<br>
+          why it crashed later.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>efibootmgr -v</td>
+    <td>To view the active boot entries registered in your NVRAM, we can use the efibootmgr command.
+      <ul>
+        <li>• efibootmgr makes managing UEFI boot targets possible.</li>
+        <li>You can use efibootmgr  to list all current boot targets.</li>
+        <li>Active boot entries are marked with a *</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>free -m</td>
+    <td>The free -m command provides a snapshot of your system's memory (RAM) usage in Megabytes.</td>
+  </tr>
+
+  <tr>
+    <td>free -mh</td>
+    <td>
+      <ul>
+        <li><b>total: </b>Your VM's total assigned RAM.</li>
+        <li><b>used: </b>RAM currently taken by Ubuntu and your running processes.</li>
+        <li><b>free: </b>RAM that is completely empty.</li>
+        <li><b>buff/cache: </b>RAM the kernel is using for things like the SLAB and disk<br>
+          caching to speed things up.</li>
+        <li><b>available: </b>The "real" amount of RAM you can still use before the system starts<br>
+          slowing down.
+        </li>
+        <li><b>Gi</b> stands for Gibibytes.</li>
+        <li>While we often use "GB" (Gigabytes) in everyday conversation, computers and Linux<br>
+          tools like free use <b>binary units (powers of 2)</b> rather than decimal units (powers<br>
+          of 10) to be more precise about memory.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>getconf -a | grep CACHE_LINESIZE</td>
+    <td>CPU cacheline detail. (CPU read/write data from and to CP<->RAM in atomic unit called<br>
+      the CPU cacheline). (unit is byte not bit)
+    </td>
+  </tr>
+
+  <tr>
+    <td>grep &lt;option&gt;</td>
+    <td>
+      <ul>
+        <li><b>-v: </b>In grep, the -v (or --invert-match) flag is used to invert the search.<br>
+          Instead of showing lines that match a pattern, it excludes them and displays only the<br>
+          lines that do not contain the specified string.
+        </li>
+        <li><b>-n: </b>the -n (or --line-number) flag prefixes each matching line with its 1-based<br>
+          line number from the input file.
+        </li>
+        <li><b>-w: </b>the <b>-w (or --word-regexp)</b> flag forces the search to match the whole<br>
+          word only.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>grub2-mkconfig</td>
+    <td><b>grub2-mkconfig</b> is the actual command-line tool that generates the final grub.cfg<br>
+      file.
+    </td>
+  </tr>
+  
+  <tr>
     <td>head Makefile</td>
     <td>To know kernel version. (Check top-level Makefile)</td>
   </tr>
@@ -21,6 +116,11 @@
   <tr>
     <td>insmod</td>
     <td>Insert module. It loads a kernel module (.ko file) directly into the running kernel. </td>
+  </tr>
+
+  <tr>
+    <td>ls -R /boot/efi</td>
+    <td>ISafely view /boot/efi files.</td>
   </tr>
   
   <tr>
@@ -54,6 +154,16 @@
         <li><b>-nn: </b>Show device class + vendor names</li>
       </ol>
     </td>
+  </tr>
+
+  <tr>
+    <td>lstop</td>
+    <td>Visualizes NUMA hierarchy.</td>
+  </tr>
+
+  <tr>
+    <td>man -k grub</td>
+    <td>Keywords of GRUB</td>
   </tr>
 
   <tr>
@@ -192,13 +302,125 @@
   </tr>
 
   <tr>
-    <td>time &lt;cmd_name&gt;</td>
-    <td>To see how long a command takes to execute.</td>
+    <td>ps -A</td>
+    <td>Lists all processes currently running on the system.</td>
+  </tr>
+
+  <tr>
+    <td>ps -el</td>
+    <td>List of the processes and their respective nice values (under the column marked NI).</td>
+  </tr>
+
+   <tr>
+    <td>ps -eo state,uid,pid,ppid,rtprio,time,comm</td>
+    <td>List of the processes and their respective real-time priority (under the column marked RTPRIO).<br>
+      A value of "-" means the process is not real-time.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>ps -LA</td>
+    <td>shows all threads of all processes on the system.</td>
+  </tr>
+
+  <tr>
+    <td>ps aux</td>
+    <td>shows a detailed snapshot of all running processes using BSD-style (Berkeley<br>
+      Software Distribution) options.
+      <ul>
+        <li><b>a → </b>processes from all users</li>
+        <li><b>u → </b>user-oriented format
+        <li><b>x → </b>include processes without a controlling TTY (daemons)</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>pstree</td>
+    <td>pstree is a classic tool that shows your running processes as a tree structure.<br>
+      It’s much easier to read than ps when you want to see which process started (parented) another. 
+    </td>
+  </tr>
+
+  <tr>
+    <td>readelf -S &lt;module_name&gt; | grep ksym</td>
+    <td>__ksymtab/__ksymtab_gpl section of ELF. Exported symbol of module is present in this section.</td>
   </tr>
   
   <tr>
     <td>rmmod</td>
     <td>Remove Module</td>
+  </tr>
+
+  <tr>
+    <td>sed '1d'<br>sed '2d'</td>
+    <td>Delete 1st line.<br>Delete 2nd line.</td>
+  </tr>
+
+  <tr>
+    <td>systemctl isolate graphical.target</td>
+    <td>systemctl isolate graphical.target is the command you use to tell Ubuntu to immediately start<br>
+      the full desktop environment (GUI).<br>
+      <b>What happens when you run this?</b>
+      <ol>
+        <li><b>Starts the GUI: </b>It launches your display manager (like <b>GDM, SDDM,</b><br>
+          or <b>LightDM).</b>
+        </li>
+        <li><b>Loads User Services: </b>It starts all the background services needed for a<br>
+          desktop, such as networking tools, Bluetooth, and sound servers (PulseAudio/Pipewire).
+        </li>
+        <li><b>Closes Minimal Shells: </b>If you were in a restricted mode (like multi-user.target<br>
+          or text-only mode), it will "isolate" the graphical requirements and bring you to the login screen. 
+        </li>
+      </ol>
+      <b>Common Use Cases:</b>
+      <ul>
+        <li><b>Recovering from Maintenance: </b>If you booted into Emergency Mode or Rescue Mode<br>
+          to fix a kernel bug and now you want to go back to the normal desktop without rebooting,<br>
+          this is the command to use.
+        </li>
+        <li><b>Testing Graphics Drivers: </b>If you just installed a new driver for your 6.8 kernel<br>
+          and want to see if it actually loads the GUI successfully.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>time &lt;cmd_name&gt;</td>
+    <td>To see how long a command takes to execute.</td>
+  </tr>
+
+  <tr>
+    <td>ulimit</td>
+    <td>view and set resource limits. <b>-f option</b> to query the maximum possible size of<br>
+      files written to by the shell process. unlimited only implies that there is no<br>
+      particular limit imposed by the OS. Of course it's finite, limited by the actual<br>
+      available disk space on the box.
+    </td>
+  </tr>
+
+  <tr>
+    <td>uname &lt;option&gt;</td>
+    <td>
+      <li><b>-r: </b>shows the current running kernel version.</li>
+      <li><b>-a: </b>Shows All system info</li>
+      <li><b>-s: </b>Kernel name</li>
+      <li><b>-v: </b>Kernel build version</li>
+      <li><b>-m: </b>Machine architecture (x86_64, arm64, etc.)</li>
+      <li><b>-p: </b>Processor type</li>
+      <li><b>-o: </b>Operating system</li>
+    </td>
+  </tr>
+
+  <tr>
+    <td>vmstat -m</td>
+    <td>Slab cache detail (vmstat --> Report virtual memory statistics).</td>
+  </tr>
+
+  <tr>
+    <td>wc -l</td>
+    <td>counts the number of lines in input.</td>
   </tr>
   
 </table>
