@@ -90,15 +90,20 @@
   <tr>
    <td>ABI</td>
    <td>Application Binary Interface</td>
-   <td>ABI refers to the low-level interface between the kernel and other software (either user-space applications or kernel modules).<br>
-     Unlike the <b>API (Application Programming Interface)</b>, which is defined at the source code level, the <b>ABI is defined at the <br>
-     binary level (registers, memory layouts, and stack conventions). Unlike the user-space interface, the <b>internal kernel ABI is unstable</b>.
+   <td>ABI refers to the low-level interface between the kernel and other software (either<br>
+     user-space applications or kernel modules). Unlike the <b>API (Application Programming<br>
+     Interface)</b>,which is defined at the source code level, the <b>ABI is defined at the<br>
+     binary level (registers, memory layouts, and stack conventions). Unlike the user-space<br>
+     interface, the <b>internal kernel ABI is unstable</b>.<br>
     <ul>
-      <li><b>No Stability Guarantee: </b>There is no stable ABI for kernel modules. If you compile a driver for kernel v6.12,<br>
-        it will likely fail to load on v6.13 because internal data structures (like struct task_struct) frequently change their internal offsets.
+      <li><b>No Stability Guarantee: </b>There is no stable ABI for kernel modules. If you<br>
+        compile a driver for kernel v6.12, it will likely fail to load on v6.13 because<br>
+        internal data structures (like struct task_struct) frequently change their internal<br>
+        offsets.
       </li>
-      <li><b>Version Binding: </b>This is why kernel modules must be recompiled for every specific kernel version. <br>
-        The vermagic string in a .ko file ensures the module's ABI matches the running kernel exactly.
+      <li><b>Version Binding: </b>This is why kernel modules must be recompiled for every specific<br>
+        kernel version. The vermagic string in a .ko file ensures the module's ABI matches the<br>
+        running kernel exactly.
       </li>
     </ul>
    </td>
