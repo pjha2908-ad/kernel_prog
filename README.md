@@ -1,4 +1,4 @@
-<h3>Links: </h3>
+<img width="240" height="38" alt="image" src="https://github.com/user-attachments/assets/71829d9e-3291-4a7d-b245-dcfe78ce2498" /><h3>Links: </h3>
 <ul>
   <li>https://thelearningjourneyebooks.com/ebooks/TheLinuxKernelDataStructuresJourney_v2.0_April2024.pdf</li>
   <li>https://medium.com/embedworld/maximizing-performance-in-embedded-linux-with-cache-aware-programming-ec3d7ad21e5a</li>
@@ -594,6 +594,222 @@
     </td>
   </tr>
   
+</table>
+
+<h3><mark><b>Flags: <br>=============</b></mark></h3>
+
+<table border="1">
+  <th>Flags</th>
+  <th>Header File</th>
+  <th>Description</th>
+
+  <tr>
+    <td>IRQF_SHARED</td>
+    <td>&lt;linux/interrupt.h&gt;</td>
+    <td>This allows you to share the IRQ line between several devices. Required for devices on the PCI bus.</td>
+  </tr>
+
+  <tr>
+    <td>IRQF_ONESHOT</td>
+    <td></td>
+    <td>The IRQ is not enabled after the hardirq handler finishes executing. This flag is typically<br>
+      used by threaded interrupts to ensure that the IRQ remains disabled until the threaded handler completes.
+    </td>
+  </tr>
+
+  <tr>
+    <td>__IRQF_TIMER</td>
+    <td></td>
+    <td>It's used to mark the interrupt as a timer interrupt. The timer interrupt fires at periodic<br>
+      intervals and is responsible for implementing the kernel's timer/timeout mechanism, <br>
+      scheduler-related housekeeping and so on.
+    </td>
+  </tr>
+
+  <tr>
+    <td>_IRQF_NO_SUSPEND</td>
+    <td></td>
+    <td>It specifies that the interrupt remains enabled even when the system goes into a suspend state.</td>
+  </tr>
+
+  <tr>
+    <td>IRQF_NO_THREAD</td>
+    <td></td>
+    <td>IRQF_NO_THREAD flag specifies that this interrupt cannot use the threaded model.</td>
+  </tr>
+
+  <tr>
+    <td>IRQF_PROBE_SHARED</td>
+    <td></td>
+    <td><b>IRQF_PROBE_SHARED<b> is a specialized interrupt flag used by drivers that perform IRQ probing<br>
+      (automatic detection of interrupt lines) on devices that share an interrupt line with other hardware.<br>
+      Tells the kernel that the driver is willing to share the interrupt line even during the sensitive probing<br>
+      phase. It allows the probe to proceed even if the IRQ is already in use by another "shareable" driver.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_PERCPU</td>
+    <td></td>
+    <td><b>IRQF_PERCPU</b> is a specialized interrupt flag used to indicate that a specific interrupt<br>
+      line is private to each CPU core.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_NOBALANCING</td>
+    <td></td>
+    <td><b>IRQF_NOBALANCING</b> is a specialized interrupt registration flag used to exclude<br>
+      a specific interrupt from the kernel's automatic IRQ balancing mechanism.<br><br>
+      IRQ balancing is a kernel process (often assisted by the userspace irqbalance daemon) that<br>
+      periodically redistributes hardware interrupts across different CPU cores to prevent any<br>
+      single core from being overwhelmed
+</td>
+  </tr>
+
+  <tr>
+    <td>IRQF_IRQPOLL</td>
+    <td></td>
+    <td><b>IRQF_IRQPOLL</b> is a specialized interrupt registration flag used to support the<br>
+      kernel's irqpoll mechanism. It is primarily a diagnostic and recovery tool used when<br>
+      hardware or firmware fails to correctly signal interrupts.<br><br>
+      When the irqpoll boot option is active, the kernel will poll all handlers registered with<br>
+      the IRQF_IRQPOLL flag whenever an unhandled interrupt occurs on any line.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_FORCE_RESUME</td>
+    <td></td>
+    <td><b>IRQF_FORCE_RESUME</b> is a specialized interrupt flag used to ensure that a specific<br>
+      interrupt line is re-enabled immediately during the system resume process, even if the<br>
+      device itself has not yet been resumed.
+    </td>
+  </tr>
+
+  <tr>
+    <td>_IRQF_EARLY_RESUME</td>
+    <td></td>
+    <td><b>IRQF_EARLY_RESUME</b> is a specialized interrupt flag used to control the timing of<br>
+      when an interrupt is re-enabled during the system's transition from sleep (suspend) back<br>
+      to a running state (resume).
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_COND_SUSPEND</td>
+    <td></td>
+    <td><b>IRQF_COND_SUSPEND</b> is a specialized interrupt flag used to safely share an<br>
+      interrupt line between a standard device and a "non-suspending" device (like a <br>
+      system timer) during system sleep transitions.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_TRIGGER_NONE</td>
+    <td></td>
+    <td><b>IRQF_TRIGGER_NONE</b> is a flag used during interrupt registration to indicate that the<br>
+      driver is not specifying a hardware trigger style (such as edge or level). When you use <br>
+      <b>IRQF_TRIGGER_NONE,</b> you are telling the kernel to use the <b>default trigger configuration</b><br>
+      already defined for that interrupt line.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_TRIGGER_RISING</td>
+    <td></td>
+    <td><b>IRQF_TRIGGER_RISING</b> is an interrupt flag used to configure an interrupt as edge-triggered.<br>
+      It specifies that the interrupt should be generated specifically when the electrical signal on the<br> 
+      IRQ line transitions from a low voltage to a high voltage (the "rising edge").
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_TRIGGER_FALLING</td>
+    <td></td>
+    <td><b>IRQF_TRIGGER_FALLING</b> is an interrupt flag used to configure an interrupt as edge-triggered.<br>
+      It specifies that the interrupt should be generated exactly when the electrical signal on the<br>
+      IRQ line transitions from a high voltage to a low voltage (the "falling edge").
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_TRIGGER_HIGH</td>
+    <td></td>
+    <td><b>IRQF_TRIGGER_HIGH</b> is an interrupt flag used to configure a level-triggered interrupt.<br>
+      It specifies that the interrupt remains active as long as the voltage on the IRQ line is held<br>
+      at a high logical level.
+    </td>
+  </tr>
+
+  <tr>
+    <td>IRQF_TRIGGER_LOW</td>
+    <td></td>
+    <td><b>IRQF_TRIGGER_LOW</b> is an interrupt flag used to configure a level-triggered interrupt.<br>
+      It specifies that the interrupt is considered active as long as the voltage on the IRQ line<br>
+      is held at a low logical level.
+    </td>
+  </tr>
+
+  <tr>
+    <td>TIMER_DEFERABLE</td>
+    <td>&lt;linux/timer.h&gt;</td>
+    <td><b>TIMER_DEFERRABLE</b> is a flag used when initializing a kernel timer to indicate that<br>
+      the timer does not need to wake up a CPU core from a deep sleep (idle) state. Standard<br>
+      timers are "hard" deadlines. If a timer expires while a CPU is in a power-saving C-state,<br>
+      the hardware will force the CPU to wake up just to handle the interrupt. This consumes<br>
+      significant battery/power.
+      <ul>
+        <li><b>The Logic: </b>A deferrable timer says, "I want to run in 5 seconds, but if<br>
+          the CPU is asleep, don't wake it up. Just wait until the CPU wakes up for some<br>
+          other reason (like a different interrupt), and then run me."
+        </li>
+        <li><b>The Benefit: </b>It groups non-critical house-keeping tasks together, allowing<br>
+          the processor to stay in low-power mode longer.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>TIMER_PINNED</td>
+    <td>&lt;linux/timer.h&gt;</td>
+    <td><b>TIMER_PINNED</b> is a flag used during timer initialization to ensure that a<br>
+      timer's callback function always executes on the same CPU core that scheduled it.<br>
+      Normally, the Linux scheduler and the timer wheel may move a timer to a different<br>
+      CPU core to balance the load or save power (especially on multi-core SoCs).
+      <ul>
+        <li><b>The Logic: TIMER_PINNED</b> forbids this migration.</li>
+        <li><b>The Benefit: </b>It improves cache locality. If your timer handler accesses<br>
+          data that is already in the L1/L2 cache of a specific CPU, running the timer on<br>
+          that same CPU avoids expensive "cache misses" and cross-core data synchronization overhead.
+        </li>
+    </td>
+  </tr>
+
+  <tr>
+    <td>TIMER_IRQSAFE</td>
+    <td>&lt;linux/timer.h&gt;</td>
+    <td><b>TIMER_IRQSAFE</b> is a specialized flag used during timer initialization to indicate that the timer's<br>
+      callback function can be safely executed in hard-interrupt (atomic) context without triggering deadlocks.
+      <ul>
+        <li><b>The Conflict: </b>If your timer callback needs to acquire a spinlock that is also held by the<br>
+          code that was interrupted, you get a deadlock.
+        </li>
+        <li><b>The Solution: TIMER_IRQSAFE</b> tells the kernel's Timer Wheel that this specific timer is<br>
+          designed to be "interrupt-safe." It ensures that the internal locking within the timer subsystem<br>
+          itself won't conflict with the execution of your callback.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>PF_EXITING</td>
+    <td>include/linux/sched.h</td>
+    <td><b>PF_EXITING</b> is a process flag bit used to mark a task that has begun its termination sequence.</td>
+  </tr>
+
 </table>
 
 <h3><mark><b>Abbreviation: <br>===========</b></mark></h3>
