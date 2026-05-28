@@ -596,7 +596,7 @@
   
 </table>
 
-<h3><mark><b>Flags: <br>=============</b></mark></h3>
+<h3><mark><b>Flags: <br>======</b></mark></h3>
 
 <table border="1">
   <th>Flags</th>
@@ -612,17 +612,14 @@
   <tr>
     <td>IRQF_ONESHOT</td>
     <td></td>
-    <td>The IRQ is not enabled after the hardirq handler finishes executing. This flag is typically<br>
-      used by threaded interrupts to ensure that the IRQ remains disabled until the threaded handler completes.
+    <td>The IRQ is not enabled after the hardirq handler finishes executing. This flag is typically used by threaded interrupts to ensure that the IRQ remains disabled until the threaded handler completes.
     </td>
   </tr>
 
   <tr>
     <td>__IRQF_TIMER</td>
     <td></td>
-    <td>It's used to mark the interrupt as a timer interrupt. The timer interrupt fires at periodic<br>
-      intervals and is responsible for implementing the kernel's timer/timeout mechanism, <br>
-      scheduler-related housekeeping and so on.
+    <td>It's used to mark the interrupt as a timer interrupt. The timer interrupt fires at periodic intervals and is responsible for implementing the kernel's timer/timeout mechanism, scheduler-related housekeeping and so on.
     </td>
   </tr>
 
@@ -641,18 +638,14 @@
   <tr>
     <td>IRQF_PROBE_SHARED</td>
     <td></td>
-    <td><b>IRQF_PROBE_SHARED<b> is a specialized interrupt flag used by drivers that perform IRQ probing<br>
-      (automatic detection of interrupt lines) on devices that share an interrupt line with other hardware.<br>
-      Tells the kernel that the driver is willing to share the interrupt line even during the sensitive probing<br>
-      phase. It allows the probe to proceed even if the IRQ is already in use by another "shareable" driver.
+    <td><b>IRQF_PROBE_SHARED<b> is a specialized interrupt flag used by drivers that perform IRQ probing (automatic detection of interrupt lines) on devices that share an interrupt line with other hardware. Tells the kernel that the driver is willing to share the interrupt line even during the sensitive probing phase. It allows the probe to proceed even if the IRQ is already in use by another "shareable" driver.
     </td>
   </tr>
 
   <tr>
     <td>IRQF_PERCPU</td>
     <td></td>
-    <td><b>IRQF_PERCPU</b> is a specialized interrupt flag used to indicate that a specific interrupt<br>
-      line is private to each CPU core.
+    <td><b>IRQF_PERCPU</b> is a specialized interrupt flag used to indicate that a specific interrupt line is private to each CPU core.
     </td>
   </tr>
 
@@ -2076,3 +2069,35 @@
   </tr>
   
 </table>
+
+<h3><mark><b>Questions: <br>===========</b></mark></h3>
+<mark><b>Q. When to use a Softirq?</b></mark>
+<b>Ans: </b>Use a softirq only if you are writing core kernel infrastructure that requires extreme performance and massive parallelism.
+<ul>
+  <li><b>Parallelism: </b>The same softirq can run on multiple CPUs simultaneously.</li>
+  <li><b>Complexity: </b>You must ensure your code is perfectly re-entrant and uses complex fine-grained locking.</li>
+  <li><b>Usage: </b>Reserved for Networking (NET_RX/NET_TX), Block I/O, and RCU.</li>
+  <li><b>Static: </b>You cannot add new softirqs without modifying and recompiling the core kernel.</li>
+</ul>
+
+<mark><b>Q. When to use a Tasklet?</b></mark>
+<b>Ans: </b>Use a tasklet if you are maintaining legacy driver code that requires a simple, atomic bottom half.
+  <ul>
+    <li><b>Ease of Use: </b>Tasklets are dynamically allocatable and don't require you to worry about multi-CPU concurrency.</li>
+    <li><b>Serialization: </b>A specific tasklet will never run on two CPUs at once. This simplifies locking significantly.</li>
+    <li><b>Execution: </b>They always run on the same CPU that scheduled them, which is good for cache locality.</li>
+  </ul>
+  
+<mark><b>Q. In SMP can 1 method run critical section on 1 core and interrupt handler on 2nd core for the same critical section?</b></mark>
+<b>Ans: Yes,</b> Without proper synchronization, a critical section can be accessed simultaneously by a process on one core and an interrupt handler on another.
+<b>The Scenario: The "Race Condition"</b>
+Imagine you have a shared data structure protected by a standard mutex or a simple flag.
+<ul>
+  <li><b>Core 1: </b>Thread A enters the critical section (acquires a lock).</li>
+  <li><b>Core 2: </b>A hardware interrupt occurs. The CPU stops what it's doing and jumps to the Interrupt Service Routine (ISR).</li>
+  <li><b>The Conflict: </b>If the ISR on Core 2 tries to access the same data structure while Thread A is still holding it on Core 1, you have a collision.</li>
+</ul>
+
+<mark><b>Q. Why standard Mutexes fail here</b></mark>
+
+
